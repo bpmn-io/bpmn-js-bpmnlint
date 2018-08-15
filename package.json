@@ -1,0 +1,35 @@
+{
+  "name": "bpmn-js-bpmnlint",
+  "version": "0.0.0",
+  "description": "bpmn-js integration for bpmnlint",
+  "main": "index.js",
+  "scripts": {
+    "all": "run-s bundle dev",
+    "bundle": "webpack",
+    "bundle:watch": "webpack -w",
+    "dev": "webpack-serve --content ./example --open-path ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpmn-io/bpmn-js-token-simulation.git"
+  },
+  "author": "Philipp Fromme <https://github.com/philippfromme>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bpmn-io/bpmn-js-token-simulation/issues"
+  },
+  "homepage": "https://github.com/bpmn-io/bpmn-js-token-simulation#readme",
+  "devDependencies": {
+    "bpmn-font": "^0.8.0",
+    "bpmn-js": "^2.4.1",
+    "copy-webpack-plugin": "^4.5.2",
+    "npm-run-all": "^4.1.3",
+    "raw-loader": "^0.5.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-serve": "^2.0.2"
+  },
+  "dependencies": {
+    "min-dom": "^0.2.0"
+  }
+}
