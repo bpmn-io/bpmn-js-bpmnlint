@@ -29,7 +29,11 @@
   font-family: 'Arial', sans-serif;
   font-size: 12px;
   color: #444;
-  z-index: 100000;
+  z-index: 1000;
+}
+
+.bpmn-js-bpmnlint-issues:hover {
+  z-index: 2000;
 }
 
 .bpmn-js-bpmnlint-issues .group {
