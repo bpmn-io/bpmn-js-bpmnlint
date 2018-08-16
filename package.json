@@ -30,6 +30,7 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
+    "lodash": "^4.17.10",
     "min-dash": "^3.1.0",
     "min-dom": "^0.2.0"
   }
