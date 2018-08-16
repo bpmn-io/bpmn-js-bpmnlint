@@ -14,7 +14,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.bpmn$/,
+        test: /\.bpmn$|\.svg$/,
         use: {
           loader: 'raw-loader'
         }

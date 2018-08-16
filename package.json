@@ -30,6 +30,7 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
+    "min-dash": "^3.1.0",
     "min-dom": "^0.2.0"
   }
 }

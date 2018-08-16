@@ -1,0 +1,137 @@
+.bpmn-js-bpmnlint-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #fafafa;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 2px;
+  color: #444;
+  border: solid 1px #CCC;
+  display: flex;
+  align-items: center;
+  outline: none;
+}
+
+.bpmn-js-bpmnlint-button svg {
+  margin-top: -1px;
+  margin-right: 10px;
+}
+
+.bpmn-js-bpmnlint-button.activated,
+.bpmn-js-bpmnlint-button:hover {
+  background-color: #0066ff;
+  color: white;
+  border-color: #005ce6;
+}
+
+.bpmn-js-bpmnlint-issues {
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  color: #444;
+  min-width: 200px;
+  z-index: 100000;
+}
+
+.bpmn-js-bpmnlint-issues .group {
+  border-radius: 2px;
+  overflow: hidden;
+  display: none;
+}
+
+.bpmn-js-bpmnlint-issues:hover .group {
+  display: block;
+}
+
+.bpmn-js-bpmnlint-issues .icons {
+  display: flex;
+  flex-direction: column;
+}
+
+.bpmn-js-bpmnlint-issues .icons .icon {
+  display: inline-block;
+  border-radius: 2px;
+  width: 20px;
+  height: 20px;
+  line-height: 23px;
+  text-align: center;
+}
+
+.bpmn-js-bpmnlint-issues .icons .icon:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.bpmn-js-bpmnlint-issues .icons .icon.error {
+  background: #cc3300;
+  color: #fff; 
+}
+
+.bpmn-js-bpmnlint-issues .icons .icon.warning {
+  background: #ffff00;
+}
+
+.bpmn-js-bpmnlint-issues:hover .icons {
+  display: none;
+}
+
+.bpmn-js-bpmnlint-issues .group:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.bpmn-js-bpmnlint-issues .header {
+  padding: 4px;
+}
+
+.bpmn-js-bpmnlint-issues .header svg {
+  display: inline-block;
+  margin-right: 6px;
+  margin-bottom: -1px;
+}
+
+.bpmn-js-bpmnlint-issues .header.error {
+  background: #cc3300;
+  color: #fff;
+}
+
+.bpmn-js-bpmnlint-issues .header.warning {
+  background: #ffff00;
+}
+
+.bpmn-js-bpmnlint-issues .collapsable {
+  padding: 4px;
+  cursor: default;
+  overflow: hidden;
+}
+
+.bpmn-js-bpmnlint-issues .collapsable.error {
+  background-color: #ffece6;
+  border-right: solid 1px #cc3300;
+  border-left: solid 1px #cc3300;
+}
+
+.bpmn-js-bpmnlint-issues .collapsable.error:last-child {
+  border-bottom: solid 1px #cc3300;
+}
+
+.bpmn-js-bpmnlint-issues .collapsable.error:hover {
+  background-color: #cc3300;
+  color: #fff;
+}
+
+.bpmn-js-bpmnlint-issues .collapsable.warning {
+  background-color: #ffffe6;
+  border-right: solid 1px #ffff00;
+  border-left: solid 1px #ffff00;
+}
+
+.bpmn-js-bpmnlint-issues .collapsable.warning:last-child {
+  border-bottom: solid 1px #ffff00;
+}
+
+.bpmn-js-bpmnlint-issues .collapsable.warning:hover {
+  background-color: #ffff00;
+}
+
+.bpmn-js-bpmnlint-issues .details {
+  margin-top: 4px;
+}
