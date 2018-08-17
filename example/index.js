@@ -2,7 +2,7 @@ import bpmnlint from '../lib';
 
 import BpmnJS from 'bpmn-js/lib/Modeler';
 
-import exampleXML from './resources/example.bpmn';
+import exampleXML from './resources/starter.bpmn';
 
 var viewer = new BpmnJS({
   container: '#canvas',

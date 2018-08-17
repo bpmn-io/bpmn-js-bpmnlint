@@ -7,10 +7,10 @@
   border: none;
   border-radius: 2px;
   color: #444;
-  border: solid 1px #CCC;
   display: flex;
   align-items: center;
   outline: none;
+  font-weight: bold;
 }
 
 .bpmn-js-bpmnlint-button svg {
@@ -18,11 +18,19 @@
   margin-right: 10px;
 }
 
-.bpmn-js-bpmnlint-button.activated,
-.bpmn-js-bpmnlint-button:hover {
-  background-color: #0066ff;
+.bpmn-js-bpmnlint-button.success {
+  background-color: #52b415;
   color: white;
-  border-color: #005ce6;
+}
+
+.bpmn-js-bpmnlint-button.error {
+  background-color: #cc3300;
+  color: white;
+}
+
+.bpmn-js-bpmnlint-button.warning {
+  background-color: #ffff00;
+  color: #444;
 }
 
 .bpmn-js-bpmnlint-issues {
@@ -84,6 +92,7 @@
 
 .bpmn-js-bpmnlint-issues .header {
   padding: 4px;
+  font-weight: bold;
 }
 
 .bpmn-js-bpmnlint-issues .header svg {
@@ -138,4 +147,10 @@
 
 .bpmn-js-bpmnlint-issues .details {
   margin-top: 4px;
+}
+
+.bpmn-js-bpmnlint-process-issues {
+  position: absolute;
+  top: 51px;
+  right: 20px;
 }
