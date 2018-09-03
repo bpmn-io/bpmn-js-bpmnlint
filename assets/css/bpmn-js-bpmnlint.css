@@ -6,11 +6,15 @@
   padding: 5px 10px;
   border: none;
   border-radius: 2px;
-  color: #444;
+  color: #ddd;
   display: flex;
   align-items: center;
   outline: none;
   font-weight: bold;
+}
+
+.bpmn-js-bpmnlint-button.inactive:hover {
+  color: #444;
 }
 
 .bpmn-js-bpmnlint-button svg {
