@@ -7,3 +7,7 @@
 ```
 npm i && npm run all
 ```
+
+## License
+
+MIT
