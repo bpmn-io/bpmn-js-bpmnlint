@@ -1,6 +1,6 @@
 {
   "name": "bpmn-js-bpmnlint",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "bpmn-js integration for bpmnlint",
   "main": "index.js",
   "scripts": {
