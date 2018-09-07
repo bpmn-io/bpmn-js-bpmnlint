@@ -2,6 +2,8 @@
 
 [bpmn-js](https://github.com/bpmn-io/bpmn-js) integration for [bpmnlint](https://github.com/siffogh/bpmnlint).
 
+![Screenshot](docs/screenshot.png)
+
 ## Setup
 
 ```
