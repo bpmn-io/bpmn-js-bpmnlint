@@ -1,6 +1,6 @@
 # bpmn-js-bpmnlint
 
-[bpmn-js](https://github.com/bpmn-io/bpmn-js) integration for [bpmnlint](https://github.com/siffogh/bpmnlint).
+Integrates [bpmnlint](https://github.com/bpmn-io/bpmnlint) into [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
 ![Screenshot](docs/screenshot.png)
 
