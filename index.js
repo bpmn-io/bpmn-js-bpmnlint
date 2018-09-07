@@ -1,1 +1,1 @@
-export { default as Linting } from './lib';
+export { default } from './lib';

@@ -1,4 +1,4 @@
-import bpmnlint from '../lib';
+import bpmnlint from '../';
 
 import BpmnJS from 'bpmn-js/lib/Modeler';
 
