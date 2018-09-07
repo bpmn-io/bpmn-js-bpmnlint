@@ -4,11 +4,30 @@
 
 ![Screenshot](docs/screenshot.png)
 
-## Setup
+
+## Usage
+
+Integrate the linter into [bpmn-js](https://github.com/bpmn-io/bpmn-js):
+
+```javascript
+import lintModule from 'bpmn-js-bpmnlint';
+
+import BpmnModeler from 'bpmn-js/lib/Modeler';
+
+var modeler = new BpmnModeler({
+  additionalModules: [
+    lintModule
+  ]
+});
+```
+
+
+## Development Setup
 
 ```
-npm i && npm run all
+npm install && npm run dev
 ```
+
 
 ## License
 
