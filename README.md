@@ -24,7 +24,7 @@ var modeler = new BpmnModeler({
 
 ## Rules
 
-Checkout [`./features/rules.json`](./features/rules.json) for the lint configuration used.
+Checkout [`./lib/features/rules.json`](./lib/features/rules.json) for the lint configuration used.
 
 
 ## Development Setup
