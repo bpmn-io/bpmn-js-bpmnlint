@@ -30,9 +30,9 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
-    "bpmnlint": "^1.0.0-alpha4",
+    "bpmnlint": "^2.0.0",
     "bpmnlint-no-implicit-parallel-gateway": "^1.0.0-alpha1",
-    "lodash": "^4.17.10",
+    "min-dash": "^3.1.0",
     "min-dom": "^0.2.0"
   }
 }
