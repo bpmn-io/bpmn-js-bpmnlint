@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "scripts": {
-    "all": "run-s bundle dev",
+    "all": "run-s bundle copy-assets",
     "bundle": "NODE_ENV=production rollup -c",
     "copy-assets": "cpx 'assets/css/*' dist/assets/css -v",
-    "prepare": "run-s bundle copy-assets"
+    "prepublishOnly": "run-s bundle copy-assets"
   },
   "repository": {
     "type": "git",
