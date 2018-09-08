@@ -1,4 +1,4 @@
-# bpmn-js-bpmnlint-example
+# bpmn-js-bpmnlint Example
 
 This example shows how to add rule validation powered by [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpmnlint) to [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
