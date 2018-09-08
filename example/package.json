@@ -2,6 +2,7 @@
   "name": "bpmn-js-bpmnlint-example",
   "version": "0.0.0",
   "description": "An example how to extend bpmn-js with model validation",
+  "private": true,
   "scripts": {
     "dev": "webpack-serve --content ./public --open-path index.html",
     "pack-config": "bpmnlint-pack-config -c src/config.json -t es -o src/config-bundle.js",
