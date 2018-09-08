@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "bpmnlint": "^3.0.0",
-    "bpmnlint-plugin-camunda": "^0.2.0",
     "min-dash": "^3.1.0",
     "min-dom": "^0.2.0"
   }
