@@ -15,6 +15,12 @@
     "url": "git+https://github.com/bpmn-io/bpmn-js-bpmnlint.git"
   },
   "author": "Philipp Fromme <https://github.com/philippfromme>",
+  "contributors": [
+    {
+      "name": "Nico Rehwaldt",
+      "url": "https://github.com/nikku"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "bpmn-font": "^0.8.0",
