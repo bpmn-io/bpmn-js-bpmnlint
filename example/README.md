@@ -13,9 +13,9 @@ npm run dev
 
 ## Lint Rules
 
-Checkout [`./src/config.json`](./src/config.json) for the lint rules used in the example.
+Checkout [`./src/.bpmnlintrc`](./src/.bpmnlintrc) for the lint rules used in the example.
 
-The rules are packed to a browser consumable bundle using [bpmnlint-pack-config](https://github.com/nikku/bpmnlint-pack-config) and [consumed in the app](./src/app.js).
+The rules are consumed by webpack via the [bpmnlint-loader](https://github.com/nikku/bpmnlint-loader) and [consumed in the app](./src/app.js).
 
 
 ## License
