@@ -5,11 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "webpack-serve --content ./public --open-path index.html",
-    "pack-config": "bpmnlint-pack-config -c src/config.json -t es -o src/config-bundle.js",
     "bundle": "webpack --run-prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-bpmn-js-bpmnlint": "install-local ..",
-    "postinstall": "run-s install-bpmn-js-bpmnlint pack-config"
+    "postinstall": "run-s install-bpmn-js-bpmnlint"
   },
   "author": {
     "name": "Nico Rehwaldt",
@@ -19,7 +18,7 @@
   "devDependencies": {
     "bpmn-js": "^2.5.1",
     "bpmn-js-bpmnlint": "^0.4.0",
-    "bpmnlint-pack-config": "^0.3.0",
+    "bpmnlint-loader": "^0.1.1",
     "bpmnlint-plugin-camunda": "^0.2.0",
     "copy-webpack-plugin": "^4.5.2",
     "install-local": "^0.6.0",

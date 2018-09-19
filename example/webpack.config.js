@@ -18,6 +18,12 @@ module.exports = {
         use: {
           loader: 'raw-loader'
         }
+      },
+      {
+        test: /\.bpmnlintrc$/,
+        use: {
+          loader: 'bpmnlint-loader'
+        }
       }
     ]
   },
