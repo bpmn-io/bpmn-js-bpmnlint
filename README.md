@@ -35,10 +35,10 @@ The option takes a packed bpmnlint configuration which you may create from your 
 by using the [bpmnlint-pack-config](https://github.com/nikku/bpmnlint-pack-config) utility:
 
 ```shell
-bpmnlint-pack-config -o bundled-config.js
+bpmnlint-pack-config -c .bpmnlintrc -o bundled-config.js
 ```
 
-Alternatively you may use an appropriate plugin/loader for your module bundler (cf. [rollup-plugin-bpmnlint](https://github.com/nikku/rollup-plugin-bpmnlint), [bpmnlint-loader](https://github.com/nikku/bpmnlint-loader)) to bundle the configuration directly and pass it as [shown above](#usage).
+Alternatively you may use an appropriate plugin/loader for your module bundler (cf. [rollup-plugin-bpmnlint](https://github.com/nikku/rollup-plugin-bpmnlint), [bpmnlint-loader](https://github.com/nikku/bpmnlint-loader)) to bundle and consume the  configuration directly as [shown above](#usage).
 
 
 ## Resources
