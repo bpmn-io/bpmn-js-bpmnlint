@@ -17,7 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "bpmn-js": "^2.5.1",
-    "bpmn-js-bpmnlint": "^0.4.0",
+    "bpmn-js-bpmnlint": "^0.5.0",
     "bpmnlint-loader": "^0.1.1",
     "bpmnlint-plugin-camunda": "^0.2.0",
     "copy-webpack-plugin": "^4.5.2",
