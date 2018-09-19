@@ -1,3 +1,9 @@
+.bpmn-js-bpmnlint-button,
+.bpmn-js-bpmnlint-issues .group,
+.bpmn-js-bpmnlint-issues .icons .icon {
+  border-radius: 2px;
+}
+
 .bpmn-js-bpmnlint-button {
   position: absolute;
   top: 20px;
@@ -5,7 +11,6 @@
   background-color: #fafafa;
   padding: 5px 10px;
   border: none;
-  border-radius: 2px;
   color: #ddd;
   display: flex;
   align-items: center;
@@ -33,7 +38,7 @@
 }
 
 .bpmn-js-bpmnlint-button.warning {
-  background-color: #ffff00;
+  background-color: #ffc800;
   color: #444;
 }
 
@@ -49,7 +54,6 @@
 }
 
 .bpmn-js-bpmnlint-issues .group {
-  border-radius: 2px;
   overflow: hidden;
   display: none;
 }
@@ -66,7 +70,6 @@
 
 .bpmn-js-bpmnlint-issues .icons .icon {
   display: inline-block;
-  border-radius: 2px;
   width: 20px;
   height: 20px;
   line-height: 23px;
@@ -79,11 +82,11 @@
 
 .bpmn-js-bpmnlint-issues .icons .icon.error {
   background: #cc3300;
-  color: #fff; 
+  color: #fff;
 }
 
 .bpmn-js-bpmnlint-issues .icons .icon.warning {
-  background: #ffff00;
+  background: #ffc800;
 }
 
 .bpmn-js-bpmnlint-issues:hover .icons {
@@ -111,7 +114,7 @@
 }
 
 .bpmn-js-bpmnlint-issues .header.warning {
-  background: #ffff00;
+  background: #ffc800;
 }
 
 .bpmn-js-bpmnlint-issues .collapsable {
@@ -137,16 +140,16 @@
 
 .bpmn-js-bpmnlint-issues .collapsable.warning {
   background-color: #ffffe6;
-  border-right: solid 1px #ffff00;
-  border-left: solid 1px #ffff00;
+  border-right: solid 1px #ffc800;
+  border-left: solid 1px #ffc800;
 }
 
 .bpmn-js-bpmnlint-issues .collapsable.warning:last-child {
-  border-bottom: solid 1px #ffff00;
+  border-bottom: solid 1px #ffc800;
 }
 
 .bpmn-js-bpmnlint-issues .collapsable.warning:hover {
-  background-color: #ffff00;
+  background-color: #ffc800;
 }
 
 .bpmn-js-bpmnlint-issues .details {
