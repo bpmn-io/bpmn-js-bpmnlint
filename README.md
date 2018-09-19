@@ -14,7 +14,7 @@ import lintModule from 'bpmn-js-bpmnlint';
 
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
-import bpmnlintConfig from './bundled-config';
+import bpmnlintConfig from './.bpmnlintrc';
 
 var modeler = new BpmnModeler({
   linting: {
@@ -29,7 +29,8 @@ var modeler = new BpmnModeler({
 
 ## Configure Lint Rules
 
-When instantiating bpmn-js you _must_ use the `linting.bpmnlint` option to provide lint rules and their configuration.
+When instantiating bpmn-js you _must_ use the `linting.bpmnlint` option to provide linter configuration.
+
 The option takes a packed bpmnlint configuration which you may create from your local `.bpmnlintrc`
 by using the [bpmnlint-pack-config](https://github.com/nikku/bpmnlint-pack-config) utility:
 
@@ -37,9 +38,7 @@ by using the [bpmnlint-pack-config](https://github.com/nikku/bpmnlint-pack-confi
 bpmnlint-pack-config -o bundled-config.js
 ```
 
-Include the resulting `bundled-config.js` in your application and pass it to bpmn-js on instantiation as [shown above](#usage).
-
-__Note:__ Do not forget to re-pack the configuration on lint rule changes.
+Alternatively you may use an appropriate plugin/loader for your module bundler (cf. [rollup-plugin-bpmnlint](https://github.com/nikku/rollup-plugin-bpmnlint), [bpmnlint-loader](https://github.com/nikku/bpmnlint-loader)) to bundle the configuration directly and pass it as [shown above](#usage).
 
 
 ## Resources
