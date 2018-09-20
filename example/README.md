@@ -13,7 +13,7 @@ npm run dev
 
 ## Lint Rules
 
-Checkout [`./src/.bpmnlintrc`](./src/.bpmnlintrc) for the lint rules used in the example.
+Checkout the [`.bpmnlintrc` file](./.bpmnlintrc) for the lint rules used in the example.
 
 The rules are consumed by webpack via the [bpmnlint-loader](https://github.com/nikku/bpmnlint-loader) and [consumed in the app](./src/app.js).
 
