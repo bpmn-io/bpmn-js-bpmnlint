@@ -6,6 +6,11 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.7.0
+
+* `FEAT`: make `bpmnlint` an external dependency
+* `CHORE`: bundle sourcemaps
+
 ## 0.6.0
 
 * `FEAT`: emit `linting.toggle` event
