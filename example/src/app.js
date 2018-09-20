@@ -6,7 +6,7 @@ import bpmnlintConfig from '../.bpmnlintrc';
 
 import defaultDiagramXML from '../resources/example.bpmn';
 
-import fileDrop from './file-drop';
+import fileDrop from 'file-drops';
 
 
 var diagramXML = window.localStorage.getItem('diagramXML');
@@ -49,7 +49,7 @@ modeler.on('import.parse.start', function(event) {
   window.localStorage.setItem('diagramXML', xml);
 });
 
-var dndHandler = fileDrop(function(files) {
+var dndHandler = fileDrop('Drop diagram here', function(files) {
   modeler.importXML(files[0].contents);
 });
 
