@@ -29,6 +29,7 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
+    "downloadjs": "^1.4.7",
     "file-drops": "^0.2.0"
   }
 }

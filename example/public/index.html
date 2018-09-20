@@ -55,6 +55,25 @@
       position: relative;
     }
 
+    #download-button {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+
+      background-color: #EEE;
+      padding: 5px 10px;
+      border: none;
+      color: #999;
+      display: flex;
+      align-items: center;
+      outline: none;
+      font-weight: bold;
+    }
+
+    #download-button:hover {
+      background-color: #DDD;
+      color: #888;
+    }
   </style>
 
 
@@ -67,6 +86,8 @@
 </head>
 <body>
   <div id="canvas"></div>
+
+  <button id="download-button">Download Diagram</button>
 
   <script src="./app.bundled.js"></script>
 </body>

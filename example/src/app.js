@@ -8,6 +8,8 @@ import defaultDiagramXML from '../resources/example.bpmn';
 
 import fileDrop from 'file-drops';
 
+import download from 'downloadjs';
+
 
 var diagramXML = window.localStorage.getItem('diagramXML');
 
@@ -56,6 +58,14 @@ var dndHandler = fileDrop('Drop diagram here', function(files) {
   modeler.importXML(files[0].contents);
 });
 
+document.querySelector('#download-button').addEventListener('click', function(event) {
+
+  modeler.saveXML({ format: true }, function(err, xml) {
+    if (!err) {
+      download(xml, 'diagram.bpmn', 'application/xml');
+    }
+  });
+});
 
 document.querySelector('body').addEventListener('dragover', dndHandler);
 
