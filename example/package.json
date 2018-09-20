@@ -29,6 +29,6 @@
     "webpack-serve": "^2.0.2"
   },
   "dependencies": {
-    "file-drops": "^0.1.0"
+    "file-drops": "^0.2.0"
   }
 }
