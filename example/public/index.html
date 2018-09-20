@@ -19,6 +19,42 @@
       margin: 0;
     }
 
+    body {
+      position: relative;
+    }
+
+    .drop-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+
+      padding: 120px 50px;
+
+      background: rgba(255, 255, 255, 0.8);
+
+      z-index: 1000;
+    }
+
+    .drop-overlay .box {
+      text-align: center;
+      border: dashed 4px #DDD;
+      height: 100%;
+      vertical-align: middle;
+
+      pointer-events: none;
+    }
+
+    .drop-overlay .box > div {
+      font-size: 26px;
+      color: #999;
+      margin: auto;
+
+      top: 20%;
+      position: relative;
+    }
+
   </style>
 
 

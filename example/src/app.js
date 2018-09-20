@@ -4,7 +4,12 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import bpmnlintConfig from '../.bpmnlintrc';
 
-import diagramXML from '../resources/example.bpmn';
+import defaultDiagramXML from '../resources/example.bpmn';
+
+import fileDrop from './file-drop';
+
+
+var diagramXML = window.localStorage.getItem('diagramXML');
 
 var modeler = new BpmnModeler({
   container: '#canvas',
@@ -16,7 +21,8 @@ var modeler = new BpmnModeler({
   }
 });
 
-modeler.importXML(diagramXML);
+
+modeler.importXML(diagramXML || defaultDiagramXML);
 
 modeler.on('linting.toggle', function(event) {
 
@@ -25,6 +31,33 @@ modeler.on('linting.toggle', function(event) {
   setUrlParam('linting', active);
 });
 
+modeler.on('import.done', function() {
+  var active = getUrlParam('linting');
+
+  var linting = modeler.get('linting');
+
+  if (active) {
+    linting.activateLinting();
+  } else {
+    linting.deactivateLinting();
+  }
+});
+
+modeler.on('import.parse.start', function(event) {
+  var xml = event.xml;
+
+  window.localStorage.setItem('diagramXML', xml);
+});
+
+var dndHandler = fileDrop(function(files) {
+  modeler.importXML(files[0].contents);
+});
+
+
+document.querySelector('body').addEventListener('dragover', dndHandler);
+
+
+// helpers /////////////////////////////////
 
 function setUrlParam(name, value) {
 
@@ -44,16 +77,3 @@ function getUrlParam(name) {
 
   return url.searchParams.has(name);
 }
-
-
-modeler.on('import.done', function() {
-  const active = getUrlParam('linting');
-
-  const linting = modeler.get('linting');
-
-  if (active) {
-    linting.activateLinting();
-  } else {
-    linting.deactivateLinting();
-  }
-});
