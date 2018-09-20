@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.7.1
+
+* `FIX`: bump dependency to `min-dom@3`
+
 ## 0.7.0
 
 * `FEAT`: make `bpmnlint` an external dependency
