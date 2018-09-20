@@ -18,6 +18,9 @@ var modeler = new BpmnModeler({
   ],
   linting: {
     bpmnlint: bpmnlintConfig
+  },
+  keyboard: {
+    bindTo: document
   }
 });
 
