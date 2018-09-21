@@ -34,7 +34,7 @@
     "rollup-plugin-string": "^2.0.2"
   },
   "dependencies": {
-    "bpmnlint": "^3.2.0",
+    "bpmnlint": "^3.3.0",
     "min-dash": "^3.1.0",
     "min-dom": "^3.1.1"
   }
