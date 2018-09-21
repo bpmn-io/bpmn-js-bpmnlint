@@ -54,7 +54,7 @@ modeler.on('import.parse.start', function(event) {
   window.localStorage.setItem('diagramXML', xml);
 });
 
-var dndHandler = fileDrop('Drop diagram here', function(files) {
+var dndHandler = fileDrop('Drop BPMN Diagram here.', function(files) {
   modeler.importXML(files[0].contents);
 });
 
