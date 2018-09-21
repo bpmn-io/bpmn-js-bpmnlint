@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.8.1
+
+* `CHORE`: update to `bpmnlint@3.3.1`
+
 ## 0.8.0
 
 * `CHORE`: update to `bpmnlint@3.3.0`
