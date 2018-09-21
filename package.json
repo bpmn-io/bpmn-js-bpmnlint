@@ -23,6 +23,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "bpmnlint": "^4.0.0",
     "bpmn-font": "^0.8.0",
     "bpmn-js": "^2.4.1",
     "cpx": "^1.5.0",
@@ -34,8 +35,10 @@
     "rollup-plugin-string": "^2.0.2"
   },
   "dependencies": {
-    "bpmnlint": "^3.3.1",
     "min-dash": "^3.1.0",
     "min-dom": "^3.1.1"
+  },
+  "peerDependencies": {
+    "bpmnlint": "^4.0.0 || ^3.2.0"
   }
 }
