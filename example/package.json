@@ -17,10 +17,10 @@
   "license": "MIT",
   "devDependencies": {
     "bpmn-js": "^2.5.2",
-    "bpmn-js-bpmnlint": "^0.9.0",
+    "bpmn-js-bpmnlint": "^0.10.0",
     "bpmnlint": "^5.0.0",
     "bpmnlint-loader": "^0.1.3",
-    "bpmnlint-plugin-camunda": "^0.2.0",
+    "bpmnlint-plugin-camunda": "^0.3.0",
     "copy-webpack-plugin": "^4.5.2",
     "downloadjs": "^1.4.7",
     "file-drops": "^0.2.0",
