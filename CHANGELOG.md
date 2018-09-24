@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.10.0
+
+* `CHORE`: support `bpmnlint@5`
+
 ## 0.9.0
 
 * `CHORE`: make `bpmnlint` a peer dependency
