@@ -8,7 +8,7 @@
     "bundle": "webpack --run-prod",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install-bpmn-js-bpmnlint": "install-local ..",
-    "postinstall": "run-s install-bpmn-js-bpmnlint"
+    "link": "run-s install-bpmn-js-bpmnlint"
   },
   "author": {
     "name": "Nico Rehwaldt",
