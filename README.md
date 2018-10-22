@@ -4,6 +4,8 @@ Integrates [bpmnlint](https://github.com/bpmn-io/bpmnlint) into [bpmn-js](https:
 
 ![Screenshot](docs/screenshot.png)
 
+See this extension in action as part of the [bpmnlint playground](https://github.com/bpmn-io/bpmnlint-playground).
+
 
 ## Usage
 
