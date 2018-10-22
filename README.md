@@ -44,7 +44,7 @@ Alternatively you may use an appropriate plugin/loader for your module bundler (
 ## Resources
 
 * [Issues](./issues)
-* [Example](./example)
+* [Playground Project](https://github.com/bpmn-io/bpmnlint-playground)
 
 
 ## Development Setup
