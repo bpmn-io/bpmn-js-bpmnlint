@@ -6,6 +6,9 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.10.1
+
+* `CHORE`: update to `npm-run-all@4.1.5`
 * `CHORE`: drop example, as it got replaced by [bpmnlint-playground](https://github.com/bpmn-io/bpmnlint-playground)
 
 ## 0.10.0
