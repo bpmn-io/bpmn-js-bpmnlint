@@ -7,8 +7,7 @@
   "scripts": {
     "all": "run-s bundle copy-assets",
     "bundle": "NODE_ENV=production rollup -c",
-    "copy-assets": "cpx 'assets/css/*' dist/assets/css -v",
-    "prepublishOnly": "run-s bundle copy-assets"
+    "copy-assets": "cpx 'assets/css/*' dist/assets/css -v"
   },
   "repository": {
     "type": "git",
