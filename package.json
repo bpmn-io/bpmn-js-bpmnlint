@@ -1,6 +1,6 @@
 {
-  "name": "bpmn-js-bpmnlint",
-  "version": "0.10.1",
+  "name": "@process-engine/bpmn-js-bpmnlint",
+  "version": "0.1.0",
   "description": "bpmn-js integration for bpmnlint",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -12,13 +12,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bpmn-io/bpmn-js-bpmnlint.git"
+    "url": "git+https://github.com/process-engine/bpmn-js-bpmnlint"
   },
   "author": "Philipp Fromme <https://github.com/philippfromme>",
   "contributors": [
     {
       "name": "Nico Rehwaldt",
       "url": "https://github.com/nikku"
+    },
+    {
+      "name": "Bastian Schnittger",
+      "url": "https://github.com/Vyperus"
+    },
+    {
+      "name": "Christian Werner",
+      "url": "https://github.com/ElRaptorus"
     }
   ],
   "license": "MIT",
