@@ -1,6 +1,6 @@
 {
   "name": "@process-engine/bpmn-js-bpmnlint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "bpmn-js integration for bpmnlint",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
