@@ -1,46 +1,69 @@
-#### Describe your issue
+## BEFORE SUBMITTING
 
-> Describe the issue or ask your question regarding this module.
-> Provide as much relevant information as you can. If you're not sure if something
-> is relevant or not, include it as well!
+> **Please ensure you have followed this guide, _before_ submitting your issue!**
 >
-> Logs and screenshots are very welcome!
+> - Check if this issue already exists (including closed issues!)
+> - Prefix the issue title according to the [gitmoji guide](https://gitmoji.carloscuesta.me/)
+> - Reference all PRs and issues related to this one
+>
+><details>
+><summary>
+>Click here for a list of commonly used issue emojis.
+></summary>
+>
+>| Description              | Glyphe                      | Emoji|
+>|--------------------------|-----------------------------|------|
+>| Bugfix                   | `:bug:`                     | 🐛   |
+>| Fixing Security issues   | `:lock:`                    | 🔒   |
+>| Improving Performance    | `:zap:`                     | ⚡️   |
+>| New Feature              | `:sparkles:`                | ✨   |
+>| Refactoring Code         | `:recycle:`                 | ♻️   |
+>| CI Pipeline related      | `:construction_worker_man:` | 👷   |
+>| Configuration releated   | `:wrench:`                  | 🔧   |
+>| Tests                    | `:white_check_mark:`        | ✅   |
+>| Removing Stuff           | `:fire:`                    | 🔥   |
+>| Dependencies Downgrade   | `:arrow_down:`              | ⬇️   |
+>| Dependencies Upgrade     | `:arrow_up:`                | ⬆️   |
+>| Linter                   | `:rotating_light:`          | 🚨   |
+>| Cosmetic                 | `:lipstick:`                | 💄   |
+>| Miscellaneous            | `:package:`                 | 📦   |
+>
+></details>
+>
+> **Please remove this section when you're done creating this issue.**
 
-#### How can others reproduce the issue?
+## Description
 
+> Describe your issue/question here.
+>
+> Provide as much relevant information as you can.
+> If you're not sure if something is relevant or not, include it as well!
+>
+>**If this is a feature request, please give a short summary as to what you need it for!**
+
+## Reproduction
+
+> You can remove this section, if the issue isn't something that requires reproducton.
+>
 > Describe how others can reproduce this issue as precisely as possible.
->
-> Please provide the diagram if the error ocurred on specific actions on a
-> diagram.
 >
 > If you can't reproduce the issue, let us know what you tried!
 >
-> You can remove this section if the issue isn't something reproducable
-> (for example for certain questions or feature requests).
+> Logs, Screenshots and BPMN files are always helpful!
 
-#### Possible solution
+## Possible solution
 
-> If you have a possible solution to this issue or an idea that might
-> help us to find one, describe it here. Let us know what you tried!
+> This section is usually only required when reporting bugs.
+> So you can remove it, if this issue is not something that needs solving.
 >
-> You can remove this section if it'd be empty.
+> Of course, if you make a feature request and already have an idea on how
+> to implement it, you are welcome to describe your proposed solution here as well!
 
-#### What's your setup
+## My setup
 
-- BPMN-Studio Version (`4.x.x`):
+> You can remove this section, if it's irrelevant to the issue
+
 - OS (`Windows/OS X/Linux` + `version`):
 - Node (`node --version`):
 - NPM (`npm --version`):
 - Docker (`docker version --format '{{.Server.Version}}'`):
-
-> You can remove this section if it's irrelevant to the issue
-> (for example for certain questions or feature requests).
-
-#### Issue checklist
-
-Please check the boxes in this list after submitting your Issue:
-
-- [ ] I've checked if this issue already exists
-- [ ] I've included all the information that i think is relevant
-- [ ] I've added logs and/or screenshots (if applicable)
-- [ ] I've mentioned PRs and issues that relate to this one
