@@ -6,14 +6,14 @@
   "module": "dist/index.esm.js",
   "source": "lib/index.js",
   "scripts": {
-    "all": "run-s test distro copy-assets",
+    "all": "run-s test distro",
     "test": "karma start --no-auto-test --single-run",
     "dev": "karma start",
-    "distro": "run-s bundle test:bundle",
+    "distro": "run-s bundle test:bundle copy-assets",
     "bundle": "NODE_ENV=production rollup -c",
     "test:bundle": "echo \"NO TESTS YET\"",
     "copy-assets": "cpx 'assets/css/*' dist/assets/css -v",
-    "prepublishOnly": "run-s bundle copy-assets"
+    "prepublishOnly": "run-s distro"
   },
   "repository": {
     "type": "git",
