@@ -2,5 +2,6 @@ assets
 test
 lib
 !dist
+.travis.yml
 karma.config.js
 rollup.config.js
