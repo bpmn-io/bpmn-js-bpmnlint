@@ -1,6 +1,6 @@
 import pkg from './package.json';
 
-import string from 'rollup-plugin-string';
+import { string } from 'rollup-plugin-string';
 
 function pgl(plugins=[]) {
   return [
