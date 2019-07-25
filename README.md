@@ -1,5 +1,7 @@
 # bpmn-js-bpmnlint
 
+[![Build Status](https://travis-ci.com/bpmn-io/bpmn-js-bpmnlint.svg?branch=master)](https://travis-ci.com/bpmn-io/bpmn-js-bpmnlint)
+
 Integrates [bpmnlint](https://github.com/bpmn-io/bpmnlint) into [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
 ![Screenshot](docs/screenshot.png)
