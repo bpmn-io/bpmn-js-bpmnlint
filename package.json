@@ -4,6 +4,7 @@
   "description": "bpmn-js integration for bpmnlint",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
+  "source": "lib/index.js",
   "scripts": {
     "all": "run-s bundle copy-assets",
     "bundle": "NODE_ENV=production rollup -c",
