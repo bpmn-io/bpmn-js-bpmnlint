@@ -6,6 +6,11 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.11.1
+
+* `CHORE`: remove unneeded dev asset from bundle
+* `FIX`: pack css assets again
+
 ## 0.11.0
 
 * `FEAT`: integrate with `editorActions`
