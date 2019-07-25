@@ -52,7 +52,8 @@ Alternatively you may use an appropriate plugin/loader for your module bundler (
 ## Development Setup
 
 ```
-npm install && npm run dev
+npm install
+npm run dev
 ```
 
 
