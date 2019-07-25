@@ -1,7 +1,7 @@
 assets
 test
 lib
-!dist
+!dist/*
 .travis.yml
-karma.config.js
+karma.conf.js
 rollup.config.js
