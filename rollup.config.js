@@ -1,36 +1,31 @@
 import pkg from './package.json';
 
-import json from 'rollup-plugin-json';
 import string from 'rollup-plugin-string';
-
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-
 
 function pgl(plugins=[]) {
   return [
-    resolve(),
-    json(),
     string({
       include: '**/*.svg'
     }),
-    ...plugins,
-    commonjs()
+    ...plugins
   ];
 }
 
+const srcEntry = pkg.source;
+
 export default [
   {
-    input: 'lib/index.js',
+    input: srcEntry,
     output: [
       { file: pkg.main, format: 'cjs', sourcemap: true },
       { file: pkg.module, format: 'es', sourcemap: true }
     ],
-    plugins: pgl(),
     external: [
-      'min-dash',
+      'bpmnlint',
       'min-dom',
-      'bpmnlint'
-    ]
+      'min-dash',
+      'moddle'
+    ],
+    plugins: pgl()
   }
 ];
