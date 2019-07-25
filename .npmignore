@@ -1,4 +1,6 @@
 assets
-!dist
+test
 lib
+!dist
+karma.config.js
 rollup.config.js
