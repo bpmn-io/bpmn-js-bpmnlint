@@ -6,6 +6,13 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.11.0
+
+* `FEAT`: integrate with `editorActions`
+* `FEAT`: show human readable error on missing `config.linting`
+* `CHORE`: test against `bpmn-js@4`
+* `CHORE`: test against `bpmnlint@5.1`
+
 ## 0.10.1
 
 * `CHORE`: update to `npm-run-all@4.1.5`
