@@ -2,6 +2,8 @@ assets
 test
 lib
 !dist/*
+.eslintrc
+.eslintignore
 .travis.yml
 karma.conf.js
 rollup.config.js

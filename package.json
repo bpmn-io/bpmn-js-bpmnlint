@@ -6,7 +6,8 @@
   "module": "dist/index.esm.js",
   "source": "lib/index.js",
   "scripts": {
-    "all": "run-s test distro",
+    "all": "run-s lint test distro",
+    "lint": "eslint .",
     "test": "karma start --no-auto-test --single-run",
     "dev": "karma start",
     "distro": "run-s bundle test:bundle copy-assets",
@@ -33,6 +34,8 @@
     "bpmnlint-loader": "^0.1.3",
     "chai": "^4.2.0",
     "cpx": "^1.5.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-bpmn-io": "^0.8.2",
     "karma": "^4.2.0",
     "karma-chrome-launcher": "^3.0.0",
     "karma-mocha": "^1.3.0",
