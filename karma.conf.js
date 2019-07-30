@@ -61,8 +61,8 @@ module.exports = function(karma) {
       }
     },
 
-    autoWatch: false,
-    singleRun: true,
+    autoWatch: true,
+    singleRun: false,
 
     webpack: {
       mode: 'development',
