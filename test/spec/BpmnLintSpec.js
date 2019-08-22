@@ -89,6 +89,37 @@ describe('bpmn-js-bpmnlint', function() {
   });
 
 
+  it('should use eagerly provided custom config', function() {
+
+    // given
+    var bpmnlintrcOverride = {
+      config: {},
+      resolver: {}
+    };
+
+    var modeler = new Modeler({
+      additionalModules: [
+        {
+          __init__: [
+            function(linting) {
+              linting.setLinterConfig(bpmnlintrcOverride);
+            }
+          ]
+        },
+        LintModule
+      ],
+      linting: {
+        bpmnlint: bpmnlintrc
+      }
+    });
+
+    var linting = modeler.get('linting');
+
+    // then
+    expect(linting.getLinterConfig()).to.equal(bpmnlintrcOverride);
+  });
+
+
   it('should throw when lazily providing broken config', function() {
 
     // given
