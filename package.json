@@ -1,6 +1,6 @@
 {
   "name": "bpmn-js-bpmnlint",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "bpmn-js integration for bpmnlint",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
