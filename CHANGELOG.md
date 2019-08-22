@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.12.2
+
+* `FIX`: do not override eagerly provided external config
+
 ## 0.12.1
 
 * `CHORE`: support `bpmnlint@6`
