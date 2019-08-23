@@ -31,18 +31,26 @@ var modeler = new BpmnModeler({
 ```
 
 
-## Configure Lint Rules
+## Bundle Lint Rules
 
-When instantiating bpmn-js you _must_ use the `linting.bpmnlint` option to provide linter configuration.
+Use an appropriate plugin/loader for your module bundler (cf. [rollup-plugin-bpmnlint](https://github.com/nikku/rollup-plugin-bpmnlint), [bpmnlint-loader](https://github.com/nikku/bpmnlint-loader)) to bundle the bpmnlint configuration directly with your application as [shown above](#usage).
 
-The option takes a packed bpmnlint configuration which you may create from your local `.bpmnlintrc`
-by using the [bpmnlint-pack-config](https://github.com/nikku/bpmnlint-pack-config) utility:
+Alternatively, pack your local `.bpmnlintrc` file using the [bpmnlint-pack-config](https://github.com/nikku/bpmnlint-pack-config) utility:
 
 ```shell
 bpmnlint-pack-config -c .bpmnlintrc -o bundled-config.js
 ```
 
-Alternatively you may use an appropriate plugin/loader for your module bundler (cf. [rollup-plugin-bpmnlint](https://github.com/nikku/rollup-plugin-bpmnlint), [bpmnlint-loader](https://github.com/nikku/bpmnlint-loader)) to bundle and consume the  configuration directly as [shown above](#usage).
+
+## Plug-in Lint Rules
+
+Provide the [packed lint rules](#bundle-lint-rules) via the `linting.bpmnlint` option. You may set it dynamically, too:
+
+```javascript
+var linting = modeler.get('linting');
+
+linting.setLinterConfig(bpmnlintConfig);
+```
 
 
 ## Resources
