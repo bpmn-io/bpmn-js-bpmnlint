@@ -55,7 +55,7 @@ linting.setLinterConfig(bpmnlintConfig);
 
 ## Resources
 
-* [Issues](./issues)
+* [Issues](https://github.com/bpmn-io/bpmn-js-bpmnlint/issues)
 * [Playground Project](https://github.com/bpmn-io/bpmnlint-playground)
 
 
