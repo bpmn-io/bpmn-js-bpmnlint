@@ -30,6 +30,8 @@ describe('bpmn-js-bpmnlint', function() {
 
     // then
     expect(linting).to.exist;
+
+    expect(linting.getLinterConfig()).to.eql(bpmnlintrc);
   });
 
 
@@ -47,6 +49,8 @@ describe('bpmn-js-bpmnlint', function() {
 
     // then
     expect(linting).to.exist;
+
+    expect(linting.getLinterConfig()).to.exist;
   });
 
 
