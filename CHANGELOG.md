@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.12.4
+
+* `FIX`: correct no configuration set check
+
 ## 0.12.3
 
 * `CHORE`: bump bpmnlint version
