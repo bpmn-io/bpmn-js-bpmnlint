@@ -1,13 +1,17 @@
 .bpmn-js-bpmnlint-button,
-.bpmn-js-bpmnlint-issues .group,
+.bpmn-js-bpmnlint-issues .group {
+  border-radius: 100px;
+}
+
 .bpmn-js-bpmnlint-issues .icons .icon {
-  border-radius: 2px;
+  border-radius: 100%;
 }
 
 .bpmn-js-bpmnlint-button {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
   background-color: #fafafa;
   padding: 5px 10px;
   border: none;
@@ -39,125 +43,98 @@
 
 .bpmn-js-bpmnlint-button.warning {
   background-color: #ffc800;
-  color: #444;
+  color: white;
+}
+
+.bpmn-js-bpmnlint-issues:not(.open) {
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .bpmn-js-bpmnlint-issues {
+  padding: 8px;
+  bottom: 5px;
+  color: #444;
   font-family: 'Arial', sans-serif;
   font-size: 12px;
-  color: #444;
+  position: absolute;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  background: #FAFAFA;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 500;
+}
+
+.bpmn-js-bpmnlint-issues.hover {
   z-index: 1000;
 }
 
-.bpmn-js-bpmnlint-issues:hover {
-  z-index: 2000;
-}
-
-.bpmn-js-bpmnlint-issues .group {
-  overflow: hidden;
-  display: none;
-}
-
-.bpmn-js-bpmnlint-issues:hover .group {
-  display: block;
-  min-width: 200px;
-}
-
-.bpmn-js-bpmnlint-issues .icons {
-  display: flex;
-  flex-direction: column;
-}
-
-.bpmn-js-bpmnlint-issues .icons .icon {
+.djs-overlay-linting .icon {
+  background: white;
+  border-radius: 100%;
   display: inline-block;
-  width: 20px;
   height: 20px;
   line-height: 23px;
   text-align: center;
+  width: 20px;
 }
 
-.bpmn-js-bpmnlint-issues .icons .icon:not(:last-child) {
-  margin-bottom: 4px;
-}
-
-.bpmn-js-bpmnlint-issues .icons .icon.error {
-  background: #cc3300;
-  color: #fff;
-}
-
-.bpmn-js-bpmnlint-issues .icons .icon.warning {
-  background: #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues:hover .icons {
-  display: none;
-}
-
-.bpmn-js-bpmnlint-issues .group:not(:last-child) {
-  margin-bottom: 4px;
-}
-
-.bpmn-js-bpmnlint-issues .header {
-  padding: 4px;
-  font-weight: bold;
-}
-
-.bpmn-js-bpmnlint-issues .header svg {
-  display: inline-block;
-  margin-right: 6px;
-  margin-bottom: -1px;
-}
-
-.bpmn-js-bpmnlint-issues .header.error {
-  background: #cc3300;
-  color: #fff;
-}
-
-.bpmn-js-bpmnlint-issues .header.warning {
-  background: #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable {
-  padding: 4px;
-  cursor: default;
-  overflow: hidden;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.error {
-  background-color: #ffece6;
-  border-right: solid 1px #cc3300;
-  border-left: solid 1px #cc3300;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.error:last-child {
-  border-bottom: solid 1px #cc3300;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.error:hover {
+.djs-overlay-linting .icon.error {
   background-color: #cc3300;
-  color: #fff;
+  color: white;
+
+
+  /* color: #cc3300; */
 }
 
-.bpmn-js-bpmnlint-issues .collapsable.warning {
-  background-color: #ffffe6;
-  border-right: solid 1px #ffc800;
-  border-left: solid 1px #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.warning:last-child {
-  border-bottom: solid 1px #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.warning:hover {
+.djs-overlay-linting .icon.warning {
   background-color: #ffc800;
+  color: white;
+  /* color: #ffc800; */
 }
 
-.bpmn-js-bpmnlint-issues .details {
-  margin-top: 4px;
+.bpmn-js-bpmnlint-issues {
+  min-width: 200px;
 }
 
-.bpmn-js-bpmnlint-process-issues {
+.bpmn-js-bpmnlint-issues ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bpmn-js-bpmnlint-issues ul li {
+  display: flex;
+  flex-direction: row;
+}
+
+.bpmn-js-bpmnlint-issues ul li.error svg {
+  color: #cc3300;
+}
+
+.bpmn-js-bpmnlint-issues ul li.warning svg {
+  color: #ffc800;
+}
+
+.bpmn-js-bpmnlint-issues ul:not(:first-child),
+.bpmn-js-bpmnlint-issues ul li:not(:first-child) {
+  margin-top: 8px;
+}
+
+.bpmn-js-bpmnlint-issues ul li a {
+  color: #444;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+.bpmn-js-bpmnlint-issues ul li a:hover {
+  text-decoration: underline;
+}
+
+.bpmn-js-bpmnlint-root-element-issues {
   position: absolute;
-  top: 51px;
-  right: 20px;
+  bottom: 20px;
+  left: 20px;
 }
