@@ -11,7 +11,7 @@ import bpmnlintrc from './.bpmnlintrc';
 insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 
 
-describe('bpmn-js-bpmnlint', function() {
+describe('linting', function() {
 
   it('should load specified config', function() {
 
@@ -165,7 +165,7 @@ describe('bpmn-js-bpmnlint', function() {
       var eventBus = modeler.get('eventBus');
 
       // when
-      linting.activateLinting();
+      linting.toggle(true);
 
       eventBus.once('linting.completed', function(event) {
 
@@ -178,6 +178,47 @@ describe('bpmn-js-bpmnlint', function() {
       });
 
       linting.setLinterConfig(bpmnlintrc);
+    });
+
+  });
+
+
+  describe('activation', function() {
+
+    it('should start inactive', function() {
+
+      // given
+      var modeler = new Modeler({
+        additionalModules: [
+          LintModule
+        ]
+      });
+
+      // when
+      var linting = modeler.get('linting');
+
+      // then
+      expect(linting.isActive()).to.be.false;
+    });
+
+
+    it('should start active, overriding default', function() {
+
+      // given
+      var modeler = new Modeler({
+        additionalModules: [
+          LintModule
+        ],
+        linting: {
+          active: true
+        }
+      });
+
+      // when
+      var linting = modeler.get('linting');
+
+      // then
+      expect(linting.isActive()).to.be.true;
     });
 
   });

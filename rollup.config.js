@@ -24,6 +24,7 @@ export default [
       'bpmnlint',
       'min-dom',
       'min-dash',
+      'diagram-js/lib/util/EscapeUtil',
       'moddle'
     ],
     plugins: pgl()

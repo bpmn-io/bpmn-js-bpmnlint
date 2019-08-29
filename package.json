@@ -12,8 +12,9 @@
     "dev": "karma start",
     "distro": "run-s bundle test:bundle copy-assets",
     "bundle": "NODE_ENV=production rollup -c",
+    "bundle:watch": "NODE_ENV=production rollup -c -w",
     "test:bundle": "echo \"NO TESTS YET\"",
-    "copy-assets": "cpx 'assets/css/*' dist/assets/css -v",
+    "copy-assets": "cpx assets/css/* dist/assets/css/ -v",
     "prepublishOnly": "run-s distro"
   },
   "repository": {
@@ -29,7 +30,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "bpmn-js": "^4.0.3",
+    "bpmn-js": "^4.0.4",
     "bpmnlint": "^6.1.1",
     "bpmnlint-loader": "^0.1.4",
     "chai": "^4.2.0",
