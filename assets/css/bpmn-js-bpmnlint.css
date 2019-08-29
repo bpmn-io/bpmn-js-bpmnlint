@@ -1,13 +1,137 @@
-.bpmn-js-bpmnlint-button,
-.bpmn-js-bpmnlint-issues .group,
-.bpmn-js-bpmnlint-issues .icons .icon {
+.bjsl-overlay {
+  z-index: 500;
+}
+
+.bjsl-overlay:hover {
+  z-index: 1000;
+}
+
+.bjsl-dropdown {
+  display: none;
+}
+
+.bjsl-overlay:hover .bjsl-dropdown,
+.bjsl-dropdown.open {
+  display: block;
+}
+
+.bjsl-issues {
+  padding: 8px;
+  color: #444;
+  font-family: 'Arial', sans-serif;
+  font-size: 12px;
+  background: #FAFAFA;
+  border: solid 1px #CCC;
   border-radius: 2px;
 }
 
-.bpmn-js-bpmnlint-button {
+.bjsl-icon {
+  background: white;
+  border-radius: 100%;
+  display: inline-block;
+  height: 20px;
+  line-height: 23px;
+  text-align: center;
+  width: 20px;
+}
+
+.bjsl-icon-error {
+  background-color: #cc3300;
+  color: white;
+
+  /* color: #cc3300; */
+}
+
+.bjsl-icon-warning {
+  background-color: #f7c71a;
+  color: white;
+
+  /* color: #f7c71a; */
+}
+
+.bjsl-overlay {
+  position: relative;
+}
+
+.bjsl-issues-top-right .bjsl-dropdown,
+.bjsl-issues-bottom-right .bjsl-dropdown-content {
+  top: 0;
+  left: 0;
+}
+
+.bjsl-issues-bottom-right .bjsl-dropdown,
+.bjsl-issues-top-right .bjsl-dropdown-content {
+  bottom: 0;
+  left: 0;
+}
+
+.bjsl-issues-top-right .bjsl-dropdown-content {
+  padding-bottom: 5px;
+}
+
+.bjsl-issues-bottom-right .bjsl-dropdown-content {
+  padding-top: 5px;
+}
+
+.bjsl-dropdown-content {
+  min-width: 260px;
+  position:  absolute;
+  height: fit-content;
+}
+
+.bjsl-dropdown {
   position: absolute;
-  top: 20px;
-  right: 20px;
+}
+
+.bjsl-issues {
+  list-style: none;
+  margin: 0;
+}
+
+.bjsl-issues ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bjsl-issues li {
+  display: flex;
+  flex-direction: row;
+}
+
+.bjsl-issues li:not(:first-child) {
+  margin-top: 7px;
+}
+
+.bjsl-issues .error svg {
+  color: #cc3300;
+}
+
+.bjsl-issues .warning svg {
+  color: #f7c71a;
+}
+
+.bjsl-issues a {
+  color: #444;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+.bjsl-issues a:hover {
+  text-decoration: none;
+}
+
+
+/**
+ * Summary button styles
+ */
+
+.bjsl-button {
+  border-radius: 100px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
   background-color: #fafafa;
   padding: 5px 10px;
   border: none;
@@ -18,146 +142,26 @@
   font-weight: bold;
 }
 
-.bpmn-js-bpmnlint-button.inactive:hover {
+.bjsl-button-inactive:hover {
   color: #444;
 }
 
-.bpmn-js-bpmnlint-button svg {
+.bjsl-button svg {
   margin-top: -1px;
   margin-right: 10px;
 }
 
-.bpmn-js-bpmnlint-button.success {
+.bjsl-button-success {
   background-color: #52b415;
   color: white;
 }
 
-.bpmn-js-bpmnlint-button.error {
+.bjsl-button-error {
   background-color: #cc3300;
   color: white;
 }
 
-.bpmn-js-bpmnlint-button.warning {
-  background-color: #ffc800;
-  color: #444;
-}
-
-.bpmn-js-bpmnlint-issues {
-  font-family: 'Arial', sans-serif;
-  font-size: 12px;
-  color: #444;
-  z-index: 1000;
-}
-
-.bpmn-js-bpmnlint-issues:hover {
-  z-index: 2000;
-}
-
-.bpmn-js-bpmnlint-issues .group {
-  overflow: hidden;
-  display: none;
-}
-
-.bpmn-js-bpmnlint-issues:hover .group {
-  display: block;
-  min-width: 200px;
-}
-
-.bpmn-js-bpmnlint-issues .icons {
-  display: flex;
-  flex-direction: column;
-}
-
-.bpmn-js-bpmnlint-issues .icons .icon {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 23px;
-  text-align: center;
-}
-
-.bpmn-js-bpmnlint-issues .icons .icon:not(:last-child) {
-  margin-bottom: 4px;
-}
-
-.bpmn-js-bpmnlint-issues .icons .icon.error {
-  background: #cc3300;
-  color: #fff;
-}
-
-.bpmn-js-bpmnlint-issues .icons .icon.warning {
-  background: #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues:hover .icons {
-  display: none;
-}
-
-.bpmn-js-bpmnlint-issues .group:not(:last-child) {
-  margin-bottom: 4px;
-}
-
-.bpmn-js-bpmnlint-issues .header {
-  padding: 4px;
-  font-weight: bold;
-}
-
-.bpmn-js-bpmnlint-issues .header svg {
-  display: inline-block;
-  margin-right: 6px;
-  margin-bottom: -1px;
-}
-
-.bpmn-js-bpmnlint-issues .header.error {
-  background: #cc3300;
-  color: #fff;
-}
-
-.bpmn-js-bpmnlint-issues .header.warning {
-  background: #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable {
-  padding: 4px;
-  cursor: default;
-  overflow: hidden;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.error {
-  background-color: #ffece6;
-  border-right: solid 1px #cc3300;
-  border-left: solid 1px #cc3300;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.error:last-child {
-  border-bottom: solid 1px #cc3300;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.error:hover {
-  background-color: #cc3300;
-  color: #fff;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.warning {
-  background-color: #ffffe6;
-  border-right: solid 1px #ffc800;
-  border-left: solid 1px #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.warning:last-child {
-  border-bottom: solid 1px #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues .collapsable.warning:hover {
-  background-color: #ffc800;
-}
-
-.bpmn-js-bpmnlint-issues .details {
-  margin-top: 4px;
-}
-
-.bpmn-js-bpmnlint-process-issues {
-  position: absolute;
-  top: 51px;
-  right: 20px;
+.bjsl-button-warning {
+  background-color: #f7c71a;
+  color: white;
 }
