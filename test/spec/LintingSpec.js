@@ -10,6 +10,9 @@ import bpmnlintrc from './.bpmnlintrc';
 
 insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 
+insertCSS('diagram-js', require('bpmn-js/dist/assets/diagram-js.css'));
+insertCSS('bpmn-font', require('bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'));
+
 
 describe('linting', function() {
 
@@ -219,6 +222,37 @@ describe('linting', function() {
 
       // then
       expect(linting.isActive()).to.be.true;
+    });
+
+  });
+
+
+  describe('integration', function() {
+
+    it.skip('should lint with multiple issues', function() {
+
+      const el = document.createElement('div');
+      el.style.width = '100%';
+      el.style.height = '100%';
+      el.style.position = 'fixed';
+
+      document.body.appendChild(el);
+
+      // given
+      var modeler = new Modeler({
+        container: el,
+        additionalModules: [
+          LintModule
+        ],
+        linting: {
+          active: true,
+          bpmnlint: bpmnlintrc
+        }
+      });
+
+      var diagram = require('./diagram-with-issues.bpmn');
+
+      modeler.importXML(diagram);
     });
 
   });
