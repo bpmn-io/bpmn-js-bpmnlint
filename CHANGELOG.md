@@ -6,6 +6,19 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.13.0
+
+_This is more or less a full rewrite of the extension._
+
+* `FEAT`: add ability to configure initial activation state
+* `FEAT`: rework api
+* `FEAT`: use `overlays` for root element, too
+* `FEAT`: show rule name on tooltip hover
+* `FEAT`: improve look and feel
+* `FEAT`: reposition validation button and add title hint
+* `CHORE`: namespace styles
+* `CHORE`: clearly separate public and private methods
+
 ## 0.12.4
 
 * `FIX`: correct no configuration set check
