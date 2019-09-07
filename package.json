@@ -54,6 +54,7 @@
     "webpack": "^4.37.0"
   },
   "dependencies": {
+    "diagram-js": "^5.0.2",
     "min-dash": "^3.1.0",
     "min-dom": "^3.1.1"
   },
