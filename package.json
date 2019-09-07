@@ -30,8 +30,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "bpmn-js": "^4.0.4",
-    "bpmnlint": "^6.1.1",
+    "bpmn-js": "^5.0.4",
+    "bpmnlint": "^6.2.0",
     "bpmnlint-loader": "^0.1.4",
     "chai": "^4.2.0",
     "cpx": "^1.5.0",
@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "diagram-js": "^5.0.2",
-    "min-dash": "^3.1.0",
+    "min-dash": "^3.5.2",
     "min-dom": "^3.1.1"
   },
   "peerDependencies": {
