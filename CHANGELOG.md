@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.13.1
+
+* `FIX`: add missing dependency
+
 ## 0.13.0
 
 _This is more or less a full rewrite of the extension._
