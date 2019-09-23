@@ -66,26 +66,7 @@ pipeline {
       }
       steps {
         sh('node --version')
-        sh('npm run build')
-      }
-    }
-    stage('Test') {
-      when {
-        expression {buildIsRequired == true}
-      }
-      parallel {
-        stage('Lint sources') {
-          steps {
-            sh('node --version')
-            sh('npm run lint')
-          }
-        }
-        stage('Execute tests') {
-          steps {
-            sh('node --version')
-            sh('npm run test')
-          }
-        }
+        sh('npm run all')
       }
     }
     stage('Set package version') {
