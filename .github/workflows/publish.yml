@@ -1,0 +1,52 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+      - beta
+      - 'feature/**'
+      - 'release/**'
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        version: 12.x
+
+    - name: 'Install dependencies'
+      run: |
+        npm ci
+        ./node_modules/.bin/ci_tools npm-install-only --except-on-primary-branches @process-engine/ @essential-projects/
+
+    - name: 'Prepare version'
+      run: ./node_modules/.bin/ci_tools prepare-version --allow-dirty-workdir
+
+    - name: 'Build sources'
+      run: npm run build
+
+    - name: 'Run tests'
+      run: npm test
+
+    - name: 'Commit & tag version'
+      env:
+        GH_USER: "process-engine-ci"
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        ./node_modules/.bin/ci_tools commit-and-tag-version --only-on-primary-branches
+        ./node_modules/.bin/ci_tools update-github-release --only-on-primary-branches --use-title-and-text-from-git-tag
+
+    - name: 'Publish version'
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: ./node_modules/.bin/ci_tools publish-npm-package --create-tag-from-branch-name
+
