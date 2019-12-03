@@ -30,7 +30,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@process-engine/ci_tools": "^2.0.0",
+    "@process-engine/ci_tools": "^2.2.1",
     "bpmn-font": "^0.8.0",
     "bpmn-js": "^2.4.1",
     "bpmnlint": "^5.0.0",
