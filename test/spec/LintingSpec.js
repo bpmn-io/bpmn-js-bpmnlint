@@ -258,3 +258,79 @@ describe('linting', function() {
   });
 
 });
+
+describe('i18n', function() {
+
+  it('should translate lint issues text', function(done) {
+
+    const el = document.createElement('div');
+    el.style.width = '100%';
+    el.style.height = '100%';
+    el.style.position = 'fixed';
+
+    document.body.appendChild(el);
+
+    const translations = {
+      'Toggle linting': 'Перемкнути перевірку',
+      'Process is missing end event': 'У процеса відсутня завершальна подія',
+      '{errors} Errors, {warnings} Warnings': '{errors} помилок, {warnings} попередженнь'
+    };
+
+    function translateModule(template, replacements = {}) {
+      // Translate
+      let transTemplate = translations[template] || template;
+
+      // Replace
+      return transTemplate.replace(/{([^}]+)}/g, function(_, key) {
+        return key in replacements ? replacements[key] : '{' + key + '}';
+      });
+    }
+
+    // given
+    var modeler = new Modeler({
+      container: el,
+      additionalModules: [
+        LintModule,
+        {
+          translate: [ 'value', translateModule ]
+        }
+      ],
+      linting: {
+        bpmnlint: bpmnlintrc
+      }
+    });
+
+    var diagram = require('./diagram-with-issues.bpmn');
+
+    modeler.importXML(diagram, function(err) {
+
+      if (err) {
+        return done(err);
+      }
+
+      var linting = modeler.get('linting');
+      var eventBus = modeler.get('eventBus');
+
+      linting.toggle(true);
+
+      eventBus.once('linting.completed', function(event) {
+
+        const button = el.querySelector('button.bjsl-button.bjsl-button-error');
+        expect(button).to.exist;
+        expect(button.title).to.equal('Перемкнути перевірку');
+
+        const buttonTextSpan = button.querySelector('span');
+        expect(buttonTextSpan).to.exist;
+        expect(buttonTextSpan.innerText).to.equal('12 помилок, 1 попередженнь');
+
+        const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
+        expect(endEventRequiredMessage).to.exist;
+        expect(endEventRequiredMessage.dataset.message).to.equal('У процеса відсутня завершальна подія');
+
+        done();
+      });
+
+    });
+  });
+
+});
