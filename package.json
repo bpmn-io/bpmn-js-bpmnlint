@@ -11,8 +11,8 @@
     "test": "karma start --no-auto-test --single-run",
     "dev": "karma start",
     "distro": "run-s bundle test:bundle copy-assets",
-    "bundle": "NODE_ENV=production rollup -c",
-    "bundle:watch": "NODE_ENV=production rollup -c -w",
+    "bundle": "rollup -c",
+    "bundle:watch": "rollup -c -w",
     "test:bundle": "echo \"NO TESTS YET\"",
     "copy-assets": "cpx assets/css/* dist/assets/css/ -v",
     "prepublishOnly": "run-s distro"
