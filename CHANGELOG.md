@@ -5,6 +5,7 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 ## Unreleased
 
 ___Note:__ Yet to be released changes appear here._
+* `FEAT`: add translation of reports
 
 ## 0.13.1
 
