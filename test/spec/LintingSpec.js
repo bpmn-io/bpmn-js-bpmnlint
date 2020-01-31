@@ -259,6 +259,7 @@ describe('linting', function() {
 
 });
 
+
 describe('i18n', function() {
 
   it('should translate lint issues text', function(done) {
@@ -331,6 +332,7 @@ describe('i18n', function() {
       });
 
     });
+
   });
 
 });
