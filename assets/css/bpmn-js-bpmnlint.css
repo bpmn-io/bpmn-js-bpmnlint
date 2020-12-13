@@ -103,6 +103,11 @@
   margin-top: 7px;
 }
 
+.bjsl-issues svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
 .bjsl-issues .error svg {
   color: #cc3300;
 }
