@@ -6,6 +6,11 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.16.0
+
+* `CHORE`: bump to `bpmnlint@0.16.0`
+* `FIX`: prevent icon shrinks on longer lint messages ([#24](https://github.com/bpmn-io/bpmn-js-bpmnlint/issues/24))
+
 ## 0.15.0
 
 * `FEAT`: add UMD distribution
