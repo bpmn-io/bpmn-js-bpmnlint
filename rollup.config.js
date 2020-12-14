@@ -1,8 +1,8 @@
 import { string } from 'rollup-plugin-string';
 
 import { terser } from 'rollup-plugin-terser';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 import pkg from './package.json';
 
@@ -28,7 +28,8 @@ export default [
     output: {
       file: umdDist.replace(/\.js$/, '.prod.js'),
       format: 'umd',
-      name: umdName
+      name: umdName,
+      exports: 'auto'
     },
     plugins: pgl([
       resolve(),
@@ -41,7 +42,8 @@ export default [
     output: {
       file: umdDist,
       format: 'umd',
-      name: umdName
+      name: umdName,
+      exports: 'auto'
     },
     plugins: pgl([
       resolve(),
@@ -52,7 +54,7 @@ export default [
   {
     input: srcEntry,
     output: [
-      { file: pkg.main, format: 'cjs', sourcemap: true },
+      { file: pkg.main, format: 'cjs', sourcemap: true, exports: 'auto' },
       { file: pkg.module, format: 'es', sourcemap: true }
     ],
     external: [
