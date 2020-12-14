@@ -140,6 +140,7 @@ describe('linting', function() {
 
     // then
     expect(function() {
+
       // when
       linting.setLinterConfig('FOO');
     }).to.throw('Expected linterConfig = { config, resolver }');
@@ -278,6 +279,7 @@ describe('i18n', function() {
     };
 
     function translateModule(template, replacements = {}) {
+
       // Translate
       let transTemplate = translations[template] || template;
 
