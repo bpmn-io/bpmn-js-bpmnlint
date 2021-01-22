@@ -33,8 +33,8 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "bpmn-js": "^7.5.0",
-    "bpmnlint": "^7.0.1",
+    "bpmn-js": "^8.3.0",
+    "bpmnlint": "^7.2.1",
     "bpmnlint-loader": "^0.1.4",
     "chai": "^4.2.0",
     "cpx": "^1.5.0",
