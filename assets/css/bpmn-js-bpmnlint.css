@@ -117,8 +117,34 @@
   text-decoration: none;
 }
 
+.bjsl-issues .bjsl-issue-heading {
+  margin-left: 0px;
+  font-weight: bold;
+  margin-bottom: 100px;
+}
+
+.bjsl-child-issues hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.bjsl-child-issues ul {
+  margin-top: 7px;
+}
+
 .bjsl-issues a:hover {
   text-decoration: none;
+}
+
+.bjsl-id-hint {
+  background-color: #bdbdbd;
+  padding: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
 
