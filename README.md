@@ -1,6 +1,6 @@
 # bpmn-js-bpmnlint
 
-[![Build Status](https://travis-ci.com/bpmn-io/bpmn-js-bpmnlint.svg?branch=master)](https://travis-ci.com/bpmn-io/bpmn-js-bpmnlint)
+[![CI](https://github.com/bpmn-io/bpmn-js-bpmnlint/workflows/CI/badge.svg)](https://github.com/bpmn-io/bpmn-js-bpmnlint/actions?query=workflow%3ACI)
 
 Integrates [bpmnlint](https://github.com/bpmn-io/bpmnlint) into [bpmn-js](https://github.com/bpmn-io/bpmn-js).
 
