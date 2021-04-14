@@ -547,6 +547,78 @@ describe('linting', function() {
 
         });
 
+
+        it('should position overlay on root element - task without BPMNDI', function(done) {
+
+          // given
+          const diagram = require('./no-bpmndi.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
+              expect(container).to.exist;
+
+              const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
+              expect(errorOverlay).to.exist;
+
+              const issues = errorOverlay.querySelector('.bjsl-issues');
+              expect(issues).to.exist;
+
+              const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
+              expect(currentElementIssues).to.have.length(0);
+
+              const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
+              expect(childElementIssues).to.have.length(2);
+
+              const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
+              expect(childElementIssueIdHints).to.have.length(2);
+
+              done();
+            });
+
+          });
+
+        });
+
+
+        it('should position overlay on root element - task without BPMNDI & existing root errors', function(done) {
+
+          // given
+          const diagram = require('./no-bpmndi-and-root-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
+              expect(container).to.exist;
+
+              const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
+              expect(errorOverlay).to.exist;
+
+              const issues = errorOverlay.querySelector('.bjsl-issues');
+              expect(issues).to.exist;
+
+              const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
+              expect(currentElementIssues).to.have.length(1);
+
+              const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
+              expect(childElementIssues).to.have.length(2);
+
+              const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
+              expect(childElementIssueIdHints).to.have.length(2);
+
+              done();
+            });
+
+          });
+
+        });
+
       });
 
     });
