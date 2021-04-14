@@ -19,7 +19,7 @@ describe('linting', function() {
   it('should load specified config', function() {
 
     // given
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       additionalModules: [
         LintModule
       ],
@@ -29,7 +29,7 @@ describe('linting', function() {
     });
 
     // when
-    var linting = modeler.get('linting');
+    const linting = modeler.get('linting');
 
     // then
     expect(linting).to.exist;
@@ -41,14 +41,14 @@ describe('linting', function() {
   it('should start without config', function() {
 
     // given
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       additionalModules: [
         LintModule
       ]
     });
 
     // when
-    var linting = modeler.get('linting');
+    const linting = modeler.get('linting');
 
     // then
     expect(linting).to.exist;
@@ -60,7 +60,7 @@ describe('linting', function() {
   it('should not fail on broken config', function() {
 
     // given
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       additionalModules: [
         LintModule
       ],
@@ -70,7 +70,7 @@ describe('linting', function() {
     });
 
     // when
-    var linting = modeler.get('linting');
+    const linting = modeler.get('linting');
 
     // then
     expect(linting).to.exist;
@@ -80,13 +80,13 @@ describe('linting', function() {
   it('should lazy provide config', function() {
 
     // given
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       additionalModules: [
         LintModule
       ]
     });
 
-    var linting = modeler.get('linting');
+    const linting = modeler.get('linting');
 
     // when
     linting.setLinterConfig(bpmnlintrc);
@@ -99,12 +99,12 @@ describe('linting', function() {
   it('should use eagerly provided custom config', function() {
 
     // given
-    var bpmnlintrcOverride = {
+    const bpmnlintrcOverride = {
       config: {},
       resolver: {}
     };
 
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       additionalModules: [
         {
           __init__: [
@@ -120,7 +120,7 @@ describe('linting', function() {
       }
     });
 
-    var linting = modeler.get('linting');
+    const linting = modeler.get('linting');
 
     // then
     expect(linting.getLinterConfig()).to.equal(bpmnlintrcOverride);
@@ -130,13 +130,13 @@ describe('linting', function() {
   it('should throw when lazily providing broken config', function() {
 
     // given
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       additionalModules: [
         LintModule
       ]
     });
 
-    var linting = modeler.get('linting');
+    const linting = modeler.get('linting');
 
     // then
     expect(function() {
@@ -150,39 +150,35 @@ describe('linting', function() {
   it('should re-lint on configuration change', function(done) {
 
     // given
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       additionalModules: [
         LintModule
       ]
     });
 
-    var diagram = require('./diagram.bpmn');
+    const diagram = require('./diagram.bpmn');
 
-    modeler.importXML(diagram, function(err) {
+    modeler.importXML(diagram)
+      .then(function() {
+        const linting = modeler.get('linting'),
+              eventBus = modeler.get('eventBus');
 
-      if (err) {
-        return done(err);
-      }
+        // when
+        linting.toggle(true);
 
-      var linting = modeler.get('linting');
+        eventBus.once('linting.completed', function(event) {
 
-      var eventBus = modeler.get('eventBus');
+          // then
+          const issues = event.issues;
 
-      // when
-      linting.toggle(true);
+          expect(Object.keys(issues)).to.have.length(3);
 
-      eventBus.once('linting.completed', function(event) {
+          done();
+        });
 
-        // then
-        var issues = event.issues;
-
-        expect(Object.keys(issues)).to.have.length(3);
-
-        done();
-      });
-
-      linting.setLinterConfig(bpmnlintrc);
-    });
+        linting.setLinterConfig(bpmnlintrc);
+      })
+      .catch(function(err) { done(err); });
 
   });
 
@@ -192,14 +188,14 @@ describe('linting', function() {
     it('should start inactive', function() {
 
       // given
-      var modeler = new Modeler({
+      const modeler = new Modeler({
         additionalModules: [
           LintModule
         ]
       });
 
       // when
-      var linting = modeler.get('linting');
+      const linting = modeler.get('linting');
 
       // then
       expect(linting.isActive()).to.be.false;
@@ -209,7 +205,7 @@ describe('linting', function() {
     it('should start active, overriding default', function() {
 
       // given
-      var modeler = new Modeler({
+      const modeler = new Modeler({
         additionalModules: [
           LintModule
         ],
@@ -219,7 +215,7 @@ describe('linting', function() {
       });
 
       // when
-      var linting = modeler.get('linting');
+      const linting = modeler.get('linting');
 
       // then
       expect(linting.isActive()).to.be.true;
@@ -230,7 +226,7 @@ describe('linting', function() {
 
   describe('integration', function() {
 
-    it.skip('should lint with multiple issues', function() {
+    it('should lint with multiple issues', function() {
 
       const el = document.createElement('div');
       el.style.width = '100%';
@@ -240,7 +236,7 @@ describe('linting', function() {
       document.body.appendChild(el);
 
       // given
-      var modeler = new Modeler({
+      const modeler = new Modeler({
         container: el,
         additionalModules: [
           LintModule
@@ -251,7 +247,7 @@ describe('linting', function() {
         }
       });
 
-      var diagram = require('./diagram-with-issues.bpmn');
+      const diagram = require('./diagram-with-issues.bpmn');
 
       modeler.importXML(diagram);
     });
@@ -290,7 +286,7 @@ describe('i18n', function() {
     }
 
     // given
-    var modeler = new Modeler({
+    const modeler = new Modeler({
       container: el,
       additionalModules: [
         LintModule,
@@ -303,37 +299,33 @@ describe('i18n', function() {
       }
     });
 
-    var diagram = require('./diagram-with-issues.bpmn');
+    const diagram = require('./diagram-with-issues.bpmn');
 
-    modeler.importXML(diagram, function(err) {
+    modeler.importXML(diagram)
+      .then(function() {
+        const linting = modeler.get('linting'),
+              eventBus = modeler.get('eventBus');
 
-      if (err) {
-        return done(err);
-      }
+        linting.toggle(true);
 
-      var linting = modeler.get('linting');
-      var eventBus = modeler.get('eventBus');
+        eventBus.once('linting.completed', function() {
 
-      linting.toggle(true);
+          const button = el.querySelector('button.bjsl-button.bjsl-button-error');
+          expect(button).to.exist;
+          expect(button.title).to.equal('Перемкнути перевірку');
 
-      eventBus.once('linting.completed', function(event) {
+          const buttonTextSpan = button.querySelector('span');
+          expect(buttonTextSpan).to.exist;
+          expect(buttonTextSpan.innerText).to.equal('12 помилок, 1 попередженнь');
 
-        const button = el.querySelector('button.bjsl-button.bjsl-button-error');
-        expect(button).to.exist;
-        expect(button.title).to.equal('Перемкнути перевірку');
+          const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
+          expect(endEventRequiredMessage).to.exist;
+          expect(endEventRequiredMessage.dataset.message).to.equal('У процеса відсутня завершальна подія');
 
-        const buttonTextSpan = button.querySelector('span');
-        expect(buttonTextSpan).to.exist;
-        expect(buttonTextSpan.innerText).to.equal('12 помилок, 1 попередженнь');
-
-        const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
-        expect(endEventRequiredMessage).to.exist;
-        expect(endEventRequiredMessage.dataset.message).to.equal('У процеса відсутня завершальна подія');
-
-        done();
-      });
-
-    });
+          done();
+        });
+      })
+      .catch(function(err) { done(err); });
 
   });
 
