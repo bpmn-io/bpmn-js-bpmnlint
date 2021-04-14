@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ttpcdh" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.7.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.14.0">
+  <bpmn:process id="Process_170r473" isExecutable="true">
+    <bpmn:startEvent id="Event_0ui9tti" name="Start">
+      <bpmn:outgoing>Flow_11cubaq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_10jegta" name="End">
+      <bpmn:incoming>Flow_0h2b9n9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Activity_0ircx7w" name="Task_1">
+      <bpmn:incoming>Flow_11cubaq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0h2b9n9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_11cubaq" sourceRef="Event_0ui9tti" targetRef="Activity_0ircx7w" />
+    <bpmn:sequenceFlow id="Flow_0h2b9n9" sourceRef="Activity_0ircx7w" targetRef="Event_10jegta" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_170r473">
+      <bpmndi:BPMNEdge id="Flow_11cubaq_di" bpmnElement="Flow_11cubaq">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0h2b9n9_di" bpmnElement="Flow_0h2b9n9">
+        <di:waypoint x="340" y="120" />
+        <di:waypoint x="392" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0ui9tti_di" bpmnElement="Event_0ui9tti">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="145" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_10jegta_di" bpmnElement="Event_10jegta">
+        <dc:Bounds x="392" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="400" y="145" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ircx7w_di" bpmnElement="Activity_0ircx7w">
+        <dc:Bounds x="240" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

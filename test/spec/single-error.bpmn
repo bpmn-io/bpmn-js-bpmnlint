@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1q0xblp" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.7.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.14.0">
+  <bpmn:process id="Process_17akb7v" isExecutable="true">
+    <bpmn:task id="Task_1">
+      <bpmn:incoming>Flow_0qc19n8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1k41bdw</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:startEvent id="Event_154dsfn" name="Start">
+      <bpmn:outgoing>Flow_0qc19n8</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0yake26" name="End">
+      <bpmn:incoming>Flow_1k41bdw</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1k41bdw" sourceRef="Task_1" targetRef="Event_0yake26" />
+    <bpmn:sequenceFlow id="Flow_0qc19n8" sourceRef="Event_154dsfn" targetRef="Task_1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_17akb7v">
+      <bpmndi:BPMNEdge id="Flow_1k41bdw_di" bpmnElement="Flow_1k41bdw">
+        <di:waypoint x="340" y="150" />
+        <di:waypoint x="392" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qc19n8_di" bpmnElement="Flow_0qc19n8">
+        <di:waypoint x="188" y="150" />
+        <di:waypoint x="240" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0kpdjda_di" bpmnElement="Task_1">
+        <dc:Bounds x="240" y="110" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_154dsfn_di" bpmnElement="Event_154dsfn">
+        <dc:Bounds x="152" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="175" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yake26_di" bpmnElement="Event_0yake26">
+        <dc:Bounds x="392" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="400" y="175" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

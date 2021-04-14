@@ -226,9 +226,10 @@ describe('linting', function() {
 
   describe('integration', function() {
 
-    it('should lint with multiple issues', function() {
+    let modeler, el;
 
-      const el = document.createElement('div');
+    beforeEach(function() {
+      el = document.createElement('div');
       el.style.width = '100%';
       el.style.height = '100%';
       el.style.position = 'fixed';
@@ -236,7 +237,7 @@ describe('linting', function() {
       document.body.appendChild(el);
 
       // given
-      const modeler = new Modeler({
+      modeler = new Modeler({
         container: el,
         additionalModules: [
           LintModule
@@ -246,10 +247,308 @@ describe('linting', function() {
           bpmnlint: bpmnlintrc
         }
       });
+    });
 
-      const diagram = require('./diagram-with-issues.bpmn');
 
-      modeler.importXML(diagram);
+    describe('buttons', function() {
+
+      describe('button style', function() {
+
+        it('should show success button if there is no error or warning', function(done) {
+
+          // given
+          const diagram = require('./no-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const button = el.querySelector('button.bjsl-button.bjsl-button-success');
+              expect(button).to.exist;
+
+              done();
+            });
+          });
+
+        });
+
+
+        it('should show error button if there is an error', function(done) {
+
+          // given
+          const diagram = require('./single-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const button = el.querySelector('button.bjsl-button.bjsl-button-error');
+              expect(button).to.exist;
+
+              done();
+            });
+          });
+
+        });
+
+
+        it('should show warning button if there is a warning', function(done) {
+
+          // given
+          const diagram = require('./single-warning.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const button = el.querySelector('button.bjsl-button.bjsl-button-warning');
+              expect(button).to.exist;
+
+              done();
+            });
+          });
+
+        });
+
+
+        it('should show error button if there is a warning and an error', function(done) {
+
+          // given
+          const diagram = require('./warning-and-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const button = el.querySelector('button.bjsl-button.bjsl-button-error');
+              expect(button).to.exist;
+
+              done();
+            });
+
+          });
+
+        });
+
+      });
+
+
+      describe('button error amount', function() {
+
+        it('should correctly count errors and warnings', function(done) {
+
+          // given
+          const diagram = require('./7-errors-2-warnings.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const buttonSpan = el.querySelector('button.bjsl-button.bjsl-button-error span');
+              expect(buttonSpan).to.exist;
+              expect(buttonSpan.innerText).to.equal('7 Errors, 2 Warnings');
+
+              done();
+            });
+          });
+
+        });
+
+      });
+
+    });
+
+
+    describe('overlays', function() {
+
+      describe('contents', function() {
+
+        it('should show error overlay for an error', function(done) {
+
+          // given
+          const diagram = require('./single-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-error');
+              expect(overlay).to.exist;
+              expect(overlay).to.have.length(1);
+
+              done();
+            });
+
+          });
+
+        });
+
+
+        it('should show warning overlay for a warning', function(done) {
+
+          // given
+          const diagram = require('./single-warning.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-warning');
+              expect(overlay).to.exist;
+              expect(overlay).to.have.length(1);
+
+              done();
+            });
+
+          });
+
+        });
+
+
+        it('should show error overlay for a warning and an error', function(done) {
+
+          // given
+          const diagram = require('./warning-and-error-combined.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-error');
+              expect(overlay).to.exist;
+              expect(overlay).to.have.length(1);
+
+              done();
+            });
+
+          });
+
+        });
+
+
+        it('should show error and warning messages in overlay', function(done) {
+
+          // given
+          const diagram = require('./warning-and-error-combined.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const issueList = el.querySelector('.bjsl-dropdown .bjsl-dropdown-content .bjsl-issues ul');
+              expect(issueList).to.exist;
+
+              const errorEntry = issueList.querySelector('li.error');
+              expect(errorEntry).to.exist;
+
+              const errorIcon = errorEntry.querySelector('span.icon');
+              expect(errorIcon).to.exist;
+
+              const warningEntry = issueList.querySelector('li.warning');
+              expect(warningEntry).to.exist;
+
+              const warningIcon = warningEntry.querySelector('span.icon');
+              expect(warningIcon).to.exist;
+
+              done();
+            });
+
+          });
+
+        });
+
+
+        it('should provide message in overlay', function(done) {
+
+          // given
+          const diagram = require('./single-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const errorEntry = el.querySelector(
+                'a' +
+                '[title="label-required: Element is missing label/name"]' +
+                '[data-rule="label-required"]' +
+                '[data-message="Element is missing label/name"]'
+              );
+              expect(errorEntry).to.exist;
+              expect(errorEntry.innerText).to.equal('Element is missing label/name');
+
+              done();
+            });
+
+          });
+
+        });
+
+      });
+
+
+      describe('positioning', function() {
+
+        it('should position overlay on the respective element - task', function(done) {
+
+          // given
+          const diagram = require('./single-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const container = el.querySelector('.djs-overlays[data-container-id="Task_1"]');
+              expect(container).to.exist;
+              expect(container.style.left).to.equal('240px');
+              expect(container.style.top).to.equal('110px');
+              expect(container.style.position).to.equal('absolute');
+
+              done();
+            });
+
+          });
+
+        });
+
+
+        it('should position overlay on the respective element - root', function(done) {
+
+          // given
+          const diagram = require('./root-level-error.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
+              expect(container).to.exist;
+
+              const lintingOverlay = container.querySelector('.djs-overlay-linting');
+              expect(lintingOverlay.style.left).to.equal('150px');
+              expect(lintingOverlay.style.top).to.equal('20px');
+              expect(lintingOverlay.style.position).to.equal('absolute');
+
+              done();
+            });
+
+          });
+
+        });
+
+      });
+
     });
 
   });
@@ -330,3 +629,15 @@ describe('i18n', function() {
   });
 
 });
+
+
+// helper //////////////////
+
+function toggleLinting(modeler, validationCallback) {
+  const linting = modeler.get('linting'),
+        eventBus = modeler.get('eventBus');
+
+  linting.toggle(true);
+
+  eventBus.once('linting.completed', validationCallback);
+}
