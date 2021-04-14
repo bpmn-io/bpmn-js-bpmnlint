@@ -20,7 +20,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import bpmnlintConfig from './.bpmnlintrc';
 
-var modeler = new BpmnModeler({
+const modeler = new BpmnModeler({
   linting: {
     bpmnlint: bpmnlintConfig
   },
@@ -47,7 +47,7 @@ bpmnlint-pack-config -c .bpmnlintrc -o bundled-config.js
 Provide the [packed lint rules](#bundle-lint-rules) via the `linting.bpmnlint` option. You may set it dynamically, too:
 
 ```javascript
-var linting = modeler.get('linting');
+const linting = modeler.get('linting');
 
 linting.setLinterConfig(bpmnlintConfig);
 ```
