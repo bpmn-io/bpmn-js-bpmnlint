@@ -6,6 +6,11 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.17.0
+
+* `CHORE`: bump to `bpmn-js@8.3.0` and `bpmnlint@7.2.1`
+* `FIX`: display issues for elements without bpmndi on root element level ([#27](https://github.com/bpmn-io/bpmn-js-bpmnlint/issues/27))
+
 ## 0.16.0
 
 * `CHORE`: bump to `bpmnlint@0.16.0`
