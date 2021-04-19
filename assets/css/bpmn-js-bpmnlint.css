@@ -76,7 +76,6 @@
 .bjsl-dropdown-content {
   min-width: 260px;
   position:  absolute;
-  height: fit-content;
 }
 
 .bjsl-dropdown {
@@ -97,6 +96,7 @@
 .bjsl-issues li {
   display: flex;
   flex-direction: row;
+  white-space: nowrap;
 }
 
 .bjsl-issues li:not(:first-child) {
