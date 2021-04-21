@@ -6,6 +6,11 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.18.0
+
+* `FEAT`: display process errors in collaboration on linked participant ([#31](https://github.com/bpmn-io/bpmn-js-bpmnlint/pull/31))
+* `FIX`: correct related element pill height
+
 ## 0.17.0
 
 * `CHORE`: bump to `bpmn-js@8.3.0` and `bpmnlint@7.2.1`
