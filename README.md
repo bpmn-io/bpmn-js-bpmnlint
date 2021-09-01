@@ -16,6 +16,8 @@ Integrate the linter into [bpmn-js](https://github.com/bpmn-io/bpmn-js):
 ```javascript
 import lintModule from 'bpmn-js-bpmnlint';
 
+import 'bpmn-js-bpmnlint/dist/assets/css/bpmn-js-bpmnlint.css';
+
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 
 import bpmnlintConfig from './.bpmnlintrc';
