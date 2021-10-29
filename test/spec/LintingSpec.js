@@ -13,6 +13,7 @@ insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 insertCSS('diagram-js', require('bpmn-js/dist/assets/diagram-js.css'));
 insertCSS('bpmn-font', require('bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'));
 
+var singleStart = window.__env__ && window.__env__.SINGLE_START === 'true';
 
 describe('linting', function() {
 
@@ -339,7 +340,7 @@ describe('linting', function() {
 
       describe('button error amount', function() {
 
-        it('should correctly count errors and warnings', function(done) {
+        (singleStart ? it.only : it)('should correctly count errors and warnings', function(done) {
 
           // given
           const diagram = require('./7-errors-2-warnings.bpmn');
