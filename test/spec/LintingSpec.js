@@ -11,6 +11,7 @@ import bpmnlintrc from './.bpmnlintrc';
 insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 
 insertCSS('diagram-js', require('bpmn-js/dist/assets/diagram-js.css'));
+insertCSS('bpmn-js', require('bpmn-js/dist/assets/bpmn-js.css'));
 insertCSS('bpmn-font', require('bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'));
 
 var singleStart = window.__env__ && window.__env__.SINGLE_START === 'true';
@@ -538,7 +539,7 @@ describe('linting', function() {
 
               const lintingOverlay = container.querySelector('.djs-overlay-linting');
               expect(lintingOverlay.style.left).to.equal('150px');
-              expect(lintingOverlay.style.top).to.equal('20px');
+              expect(lintingOverlay.style.top).to.equal('50px');
               expect(lintingOverlay.style.position).to.equal('absolute');
 
               done();
@@ -648,6 +649,42 @@ describe('linting', function() {
 
               const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
               expect(childElementIssueIdHints).to.have.length(2);
+
+              done();
+            });
+
+          });
+
+        });
+
+
+        it('should add overlays to subprocess view', function(done) {
+
+          // given
+          const diagram = require('./multiple-plane-two-errors.bpmn');
+
+          // when
+          modeler.importXML(diagram).then(function() {
+            toggleLinting(modeler, function() {
+
+              // then
+              const collapsedOverlay = el.querySelector('.djs-overlays[data-container-id="Subprocess"]');
+              expect(collapsedOverlay).to.exist;
+
+              const collapsedError = collapsedOverlay.querySelector('.bjsl-overlay.bjsl-issues-top-right');
+              expect(collapsedError).to.exist;
+
+              const planeOverlay = el.querySelector('.djs-overlays[data-container-id="Subprocess_plane"]');
+              expect(planeOverlay).to.exist;
+
+              const planeError = planeOverlay.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
+              expect(planeError).to.exist;
+
+              const internalOverlay = el.querySelector('.djs-overlays[data-container-id="Task_B"]');
+              expect(internalOverlay).to.exist;
+
+              const internalError = internalOverlay.querySelector('.bjsl-overlay.bjsl-issues-top-right');
+              expect(internalError).to.exist;
 
               done();
             });
