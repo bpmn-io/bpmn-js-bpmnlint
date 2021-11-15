@@ -34,7 +34,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "bpmn-js": "^8.3.0",
+    "bpmn-js": "^9.0.1",
     "bpmnlint": "^7.2.1",
     "bpmnlint-loader": "^0.1.4",
     "chai": "^4.2.0",
@@ -62,7 +62,7 @@
     "webpack": "^4.44.2"
   },
   "dependencies": {
-    "diagram-js": "^6.8.2",
+    "diagram-js": "^8.1.2",
     "min-dash": "^3.5.2",
     "min-dom": "^3.1.3"
   },
