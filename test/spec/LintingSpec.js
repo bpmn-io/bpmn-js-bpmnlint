@@ -1,3 +1,5 @@
+import semver from 'semver';
+
 import {
   insertCSS
 } from 'bpmn-js/test/helper';
@@ -11,8 +13,11 @@ import bpmnlintrc from './.bpmnlintrc';
 insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 
 insertCSS('diagram-js', require('bpmn-js/dist/assets/diagram-js.css'));
-insertCSS('bpmn-js', require('bpmn-js/dist/assets/bpmn-js.css'));
 insertCSS('bpmn-font', require('bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'));
+
+if (bpmnJsSatisfies('>=9')) {
+  insertCSS('bpmn-js', require('bpmn-js/dist/assets/bpmn-js.css'));
+}
 
 var singleStart = window.__env__ && window.__env__.SINGLE_START === 'true';
 
@@ -658,7 +663,7 @@ describe('linting', function() {
         });
 
 
-        it('should add overlays to subprocess view', function(done) {
+        withBpmnJs('>=9')('should add overlays to subprocess view', function(done) {
 
           // given
           const diagram = require('./multiple-plane-two-errors.bpmn');
@@ -786,4 +791,24 @@ function toggleLinting(modeler, validationCallback) {
   linting.toggle(true);
 
   eventBus.once('linting.completed', validationCallback);
+}
+
+/**
+ * Execute test only if currently installed bpmn-js is of given version.
+ *
+ * @param {string} versionRange
+ * @param {boolean} only
+ */
+export function withBpmnJs(versionRange, only = false) {
+  if (bpmnJsSatisfies(versionRange)) {
+    return only ? it.only : it;
+  } else {
+    return it.skip;
+  }
+}
+
+function bpmnJsSatisfies(versionRange) {
+  const bpmnJsVersion = require('bpmn-js/package.json').version;
+
+  return semver.satisfies(bpmnJsVersion, versionRange, { includePrerelease: true });
 }
