@@ -544,7 +544,7 @@ describe('linting', function() {
 
               const lintingOverlay = container.querySelector('.djs-overlay-linting');
               expect(lintingOverlay.style.left).to.equal('150px');
-              expect(lintingOverlay.style.top).to.equal('50px');
+              expect(lintingOverlay.style.top).to.equal('20px');
               expect(lintingOverlay.style.position).to.equal('absolute');
 
               done();
