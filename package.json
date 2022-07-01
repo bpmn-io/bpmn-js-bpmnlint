@@ -13,8 +13,8 @@
     "test": "karma start --no-auto-test --single-run",
     "dev": "karma start",
     "distro": "run-s build test:build copy-assets",
-    "build": "NODE_ENV=production rollup -c",
-    "build:watch": "NODE_ENV=production rollup -c -w",
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "build:watch": "cross-env NODE_ENV=production rollup -c -w",
     "test:build": "karma start test/distro/karma.conf.js",
     "copy-assets": "cpx assets/css/* dist/assets/css/ -v",
     "prepublishOnly": "run-s distro"
