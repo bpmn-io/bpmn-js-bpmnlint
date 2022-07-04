@@ -419,6 +419,37 @@ describe('linting', function() {
         });
 
 
+        it('should show warning on root level', function(done) {
+
+          // given
+          const customConfig = {
+            ...bpmnlintrc,
+            'config': {
+              'rules': {
+                'start-event-required': 'warn'
+              }
+            }
+          };
+          const diagram = require('./missing-start-event.bpmn');
+
+          // when
+          modeler.get('linting').setLinterConfig(customConfig);
+
+          modeler.importXML(diagram).then(function() {
+
+            toggleLinting(modeler, function() {
+
+              // then
+              const processOverlays = el.querySelector('.djs-overlays[data-container-id="Process"]');
+              const warningIcon = processOverlays.querySelector('.bjsl-icon-warning');
+              expect(warningIcon).to.exist;
+
+              done();
+            });
+          });
+        });
+
+
         it('should show error overlay for a warning and an error', function(done) {
 
           // given
@@ -703,7 +734,6 @@ describe('linting', function() {
     });
 
   });
-
 });
 
 
