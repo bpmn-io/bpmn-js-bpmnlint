@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.18.2
+
+_Re-release of 0.18.1 without pending feature commit._
+
 ## 0.18.1
 
 * `FIX`: display root element warnings ([#34](https://github.com/bpmn-io/bpmn-js-bpmnlint/pull/34))
