@@ -6,6 +6,11 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.19.0
+
+* `FEAT`: support overlays in subprocess view ([#33](https://github.com/bpmn-io/bpmn-js-bpmnlint/pull/33))
+* `DEPS`: bump to `bpmn-js@9`
+
 ## 0.18.3
 
 _Re-release of 0.18.2._
