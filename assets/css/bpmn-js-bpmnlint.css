@@ -12,7 +12,7 @@
 
 .bjsl-overlay:hover .bjsl-dropdown,
 .bjsl-dropdown.open {
-  display: block;
+  /* display: block; */
 }
 
 .bjsl-issues {
@@ -27,19 +27,22 @@
 
 .bjsl-icon {
   background: white;
-  border-radius: 100%;
+  border-radius: 2px;
   display: inline-block;
   height: 20px;
-  line-height: 23px;
   text-align: center;
   width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bjsl-icon-error {
-  background-color: #cc3300;
-  color: white;
+  background-color: hsl(360, 100%, 45%);
+}
 
-  /* color: #cc3300; */
+.bjsl-icon-error svg {
+  fill: white;
 }
 
 .bjsl-icon-warning {
@@ -163,6 +166,7 @@
   border: none;
   color: #ddd;
   display: flex;
+  display: none;
   align-items: center;
   outline: none;
   font-weight: bold;
