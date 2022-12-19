@@ -34,6 +34,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-terser": "^0.2.0",
     "bpmn-js": "^9.0.1",
     "bpmnlint": "^8.1.1",
     "bpmnlint-loader": "^0.1.6",
@@ -55,7 +56,6 @@
     "puppeteer": "^19.4.0",
     "rollup": "^2.35.0",
     "rollup-plugin-string": "^3.0.0",
-    "rollup-plugin-terser": "^5.3.1",
     "sinon": "^9.2.4",
     "sinon-chai": "^3.5.0",
     "webpack": "^5.75.0"
