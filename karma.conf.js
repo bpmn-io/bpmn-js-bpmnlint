@@ -21,7 +21,8 @@ module.exports = function(karma) {
 
     frameworks: [
       'mocha',
-      'sinon-chai'
+      'sinon-chai',
+      'webpack'
     ],
 
     files: [
@@ -62,7 +63,7 @@ module.exports = function(karma) {
           },
           {
             test: /\.(css|bpmn|svg)$/,
-            use: 'raw-loader'
+            type: 'asset/source'
           }
         ]
       },
