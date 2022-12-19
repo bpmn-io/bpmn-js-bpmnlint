@@ -6,6 +6,12 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.20.0
+
+* `DEPS`: make `bpmn-js` a peer dependency
+* `DEPS`: make `diagram-js` a peer dependency
+* `DEPS`: support `bpmnlint@8`
+
 ## 0.19.0
 
 * `FEAT`: support overlays in subprocess view ([#33](https://github.com/bpmn-io/bpmn-js-bpmnlint/pull/33))
