@@ -62,6 +62,7 @@ export default [
       'min-dom',
       'min-dash',
       'diagram-js/lib/util/EscapeUtil',
+      'bpmn-js/lib/util/ModelUtil',
       'moddle'
     ],
     plugins: pgl()
