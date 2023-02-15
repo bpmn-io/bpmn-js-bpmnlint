@@ -11,7 +11,7 @@ const umdDist = pkg[ 'umd:main' ];
 const umdName = 'BpmnJSBpmnlint';
 
 
-function pgl(plugins=[]) {
+function pgl(plugins = []) {
   return [
     string({
       include: '**/*.svg'
