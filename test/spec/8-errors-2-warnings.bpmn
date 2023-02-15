@@ -13,7 +13,7 @@
       <bpmn:incoming>Flow_198mglr</bpmn:incoming>
       <bpmn:outgoing>Flow_1josczx</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_0q48x8k" name="Task_3">
+    <bpmn:task id="Task_3" name="Task_3">
       <bpmn:incoming>Flow_1nyvhb7</bpmn:incoming>
       <bpmn:incoming>Flow_1josczx</bpmn:incoming>
       <bpmn:outgoing>Flow_19vy52h</bpmn:outgoing>
@@ -22,7 +22,7 @@
       <bpmn:incoming>Flow_0kwnzlb</bpmn:incoming>
       <bpmn:incoming>Flow_1pawl60</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:exclusiveGateway id="Gateway_1a4g80w">
+    <bpmn:exclusiveGateway id="Gateway_1a4g80w" default="Flow_0879983">
       <bpmn:incoming>Flow_19vy52h</bpmn:incoming>
       <bpmn:outgoing>Flow_0879983</bpmn:outgoing>
       <bpmn:outgoing>Flow_128pyt3</bpmn:outgoing>
@@ -37,9 +37,9 @@
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1ucctro" sourceRef="Gateway_0wqp1m1" targetRef="Activity_0zcjg4j" />
     <bpmn:sequenceFlow id="Flow_198mglr" sourceRef="Gateway_0wqp1m1" targetRef="Activity_0uog9y0" />
-    <bpmn:sequenceFlow id="Flow_1nyvhb7" sourceRef="Activity_0zcjg4j" targetRef="Activity_0q48x8k" />
-    <bpmn:sequenceFlow id="Flow_1josczx" sourceRef="Activity_0uog9y0" targetRef="Activity_0q48x8k" />
-    <bpmn:sequenceFlow id="Flow_19vy52h" sourceRef="Activity_0q48x8k" targetRef="Gateway_1a4g80w" />
+    <bpmn:sequenceFlow id="Flow_1nyvhb7" sourceRef="Activity_0zcjg4j" targetRef="Task_3" />
+    <bpmn:sequenceFlow id="Flow_1josczx" sourceRef="Activity_0uog9y0" targetRef="Task_3" />
+    <bpmn:sequenceFlow id="Flow_19vy52h" sourceRef="Task_3" targetRef="Gateway_1a4g80w" />
     <bpmn:sequenceFlow id="Flow_0kwnzlb" sourceRef="Activity_1jukur1" targetRef="Event_01wsfo0" />
     <bpmn:sequenceFlow id="Flow_1pawl60" sourceRef="Activity_1jt1eea" targetRef="Event_01wsfo0" />
     <bpmn:sequenceFlow id="Flow_0879983" sourceRef="Gateway_1a4g80w" targetRef="Activity_1jt1eea" />
@@ -98,7 +98,7 @@
       <bpmndi:BPMNShape id="Activity_0uog9y0_di" bpmnElement="Activity_0uog9y0">
         <dc:Bounds x="270" y="190" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0q48x8k_di" bpmnElement="Activity_0q48x8k">
+      <bpmndi:BPMNShape id="Task_3_di" bpmnElement="Task_3">
         <dc:Bounds x="460" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_01wsfo0_di" bpmnElement="Event_01wsfo0">
