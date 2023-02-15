@@ -39,17 +39,6 @@ module.exports = function(karma) {
 
     browserNoActivityTimeout: 30000,
 
-    customLaunchers: {
-      ChromeHeadless_Linux: {
-        base: 'ChromeHeadless',
-        flags: [
-          '--no-sandbox',
-          '--disable-setuid-sandbox'
-        ],
-        debug: true
-      }
-    },
-
     autoWatch: true,
     singleRun: false,
 
