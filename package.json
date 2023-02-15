@@ -69,5 +69,8 @@
     "bpmn-js": "*",
     "bpmnlint": ">= 3.2",
     "diagram-js": "*"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
