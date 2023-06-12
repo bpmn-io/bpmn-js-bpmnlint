@@ -350,7 +350,7 @@ describe('linting', function() {
         (singleStart ? it.only : it)('should correctly count errors and warnings', function(done) {
 
           // given
-          const diagram = require('./8-errors-2-warnings.bpmn');
+          const diagram = require('./9-errors-2-warnings.bpmn');
 
           // when
           modeler.importXML(diagram).then(function() {
@@ -359,7 +359,7 @@ describe('linting', function() {
               // then
               const buttonSpan = el.querySelector('button.bjsl-button.bjsl-button-error span');
               expect(buttonSpan).to.exist;
-              expect(buttonSpan.innerText).to.equal('8 Errors, 2 Warnings');
+              expect(buttonSpan.innerText).to.equal('9 Errors, 2 Warnings');
 
               done();
             });
@@ -646,10 +646,10 @@ describe('linting', function() {
               expect(currentElementIssues).to.have.length(0);
 
               const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
-              expect(childElementIssues).to.have.length(2);
+              expect(childElementIssues).to.have.length(3);
 
               const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
-              expect(childElementIssueIdHints).to.have.length(2);
+              expect(childElementIssueIdHints).to.have.length(3);
 
               done();
             });
@@ -682,10 +682,10 @@ describe('linting', function() {
               expect(currentElementIssues).to.have.length(1);
 
               const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
-              expect(childElementIssues).to.have.length(2);
+              expect(childElementIssues).to.have.length(3);
 
               const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
-              expect(childElementIssueIdHints).to.have.length(2);
+              expect(childElementIssueIdHints).to.have.length(3);
 
               done();
             });
@@ -797,7 +797,7 @@ describe('i18n', function() {
 
           const buttonTextSpan = button.querySelector('span');
           expect(buttonTextSpan).to.exist;
-          expect(buttonTextSpan.innerText).to.equal('12 помилок, 1 попередженнь');
+          expect(buttonTextSpan.innerText).to.equal('16 помилок, 1 попередженнь');
 
           const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
           expect(endEventRequiredMessage).to.exist;
