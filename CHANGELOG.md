@@ -6,6 +6,11 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.21.0
+
+* `DEPS`: update to `bpmnlint@8.3.1`
+* `DEPS`: update to `bpmn-js@12`
+
 ## 0.20.1
 
 * `FIX`: correct middle alignment of issue markers
