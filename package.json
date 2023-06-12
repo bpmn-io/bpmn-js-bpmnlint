@@ -62,7 +62,7 @@
     "webpack": "^5.75.0"
   },
   "dependencies": {
-    "min-dash": "^4.0.0",
+    "min-dash": "^4.1.1",
     "min-dom": "^4.1.0"
   },
   "peerDependencies": {
