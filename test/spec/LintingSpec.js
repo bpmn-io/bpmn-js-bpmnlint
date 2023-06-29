@@ -6,6 +6,10 @@ import {
 
 import Modeler from 'bpmn-js/lib/Modeler';
 
+import { is } from 'bpmn-js/lib/util/ModelUtil';
+
+import StaticResolver from 'bpmnlint/lib/resolver/static-resolver';
+
 import LintModule from '../../lib';
 
 import bpmnlintrc from './.bpmnlintrc';
@@ -252,7 +256,32 @@ describe('linting', function() {
         ],
         linting: {
           active: true,
-          bpmnlint: bpmnlintrc
+          bpmnlint: {
+            config: {
+              extends: 'bpmnlint:recommended',
+              rules: {
+                'foo/rule-error': 'error'
+              }
+            },
+            resolver: new StaticResolver({
+              'config:bpmnlint/recommended': require('bpmnlint/config/recommended'),
+              ...Object.keys(require('bpmnlint/config/recommended').rules).reduce((rules, rule) => {
+                return {
+                  ...rules,
+                  [`rule:bpmnlint/${ rule }`]: require(`bpmnlint/rules/${ rule }`)
+                };
+              }, {}),
+              'rule:bpmnlint-plugin-foo/rule-error': function() {
+                return {
+                  check(node) {
+                    if (is(node, 'bpmn:Process')) {
+                      throw new Error('Rule error!');
+                    }
+                  }
+                };
+              }
+            })
+          }
         }
       });
     });
