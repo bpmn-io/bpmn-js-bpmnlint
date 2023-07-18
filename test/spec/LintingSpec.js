@@ -702,7 +702,7 @@ describe('linting - i18n', function() {
     document.body.appendChild(el);
 
     const translations = {
-      'Toggle linting': 'Перемкнути перевірку',
+      'Toggle linting overlays': 'Перемкнути перевірку',
       'Process is missing end event': 'У процеса відсутня завершальна подія',
       '{errors} Errors, {warnings} Warnings': '{errors} помилок, {warnings} попередженнь'
     };
