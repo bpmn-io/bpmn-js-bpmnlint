@@ -49,6 +49,11 @@
   /* color: #f7c71a; */
 }
 
+.bjsl-icon-info {
+  background-color: hsl(205, 100%, 45%);
+  color: white;
+}
+
 .bjsl-overlay {
   position: relative;
 }
@@ -113,6 +118,10 @@
 
 .bjsl-issues .warning svg {
   color: #f7c71a;
+}
+
+.bjsl-issues .info svg {
+  color: hsl(205, 100%, 45%);
 }
 
 .bjsl-issues a {
@@ -193,5 +202,10 @@
 
 .bjsl-button-warning {
   background-color: #f7c71a;
+  color: white;
+}
+
+.bjsl-button-info {
+  background-color: hsl(205, 100%, 45%);
   color: white;
 }

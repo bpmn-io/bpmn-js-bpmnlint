@@ -1,3 +1,7 @@
 {
-  "extends": "bpmnlint:recommended"
+  "extends": "bpmnlint:recommended",
+  "rules": {
+    "fake-join": "info",
+    "start-event-required": "warn"
+  }
 }
