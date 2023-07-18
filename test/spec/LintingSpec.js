@@ -235,541 +235,464 @@ describe('linting', function() {
 
   });
 
-
-  describe('integration', function() {
-
-    let modeler, el;
-
-    beforeEach(function() {
-      el = document.createElement('div');
-      el.style.width = '100%';
-      el.style.height = '100%';
-      el.style.position = 'fixed';
-
-      document.body.appendChild(el);
-
-      // given
-      modeler = new Modeler({
-        container: el,
-        additionalModules: [
-          LintModule
-        ],
-        linting: {
-          active: true,
-          bpmnlint: {
-            config: {
-              extends: 'bpmnlint:recommended',
-              rules: {
-                'foo/rule-error': 'error',
-                'no-implicit-start': 'info'
-              }
-            },
-            resolver: new StaticResolver({
-              'config:bpmnlint/recommended': require('bpmnlint/config/recommended'),
-              ...Object.keys(require('bpmnlint/config/recommended').rules).reduce((rules, rule) => {
-                return {
-                  ...rules,
-                  [`rule:bpmnlint/${ rule }`]: require(`bpmnlint/rules/${ rule }`)
-                };
-              }, {}),
-              'rule:bpmnlint-plugin-foo/rule-error': function() {
-                return {
-                  check(node) {
-                    if (is(node, 'bpmn:Process')) {
-                      throw new Error('Rule error!');
-                    }
-                  }
-                };
-              }
-            })
-          }
-        }
-      });
-    });
-
-
-    describe('buttons', function() {
-
-      describe('button style', function() {
-
-        it('should show success button if there is no error or warning', function(done) {
-
-          // given
-          const diagram = require('./no-error.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const button = el.querySelector('button.bjsl-button.bjsl-button-success');
-              expect(button).to.exist;
-
-              done();
-            });
-          });
-
-        });
-
-
-        it('should show error button if there is an error', function(done) {
-
-          // given
-          const diagram = require('./single-error.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const button = el.querySelector('button.bjsl-button.bjsl-button-error');
-              expect(button).to.exist;
-
-              done();
-            });
-          });
-
-        });
-
-
-        it('should show warning button if there is a warning', function(done) {
-
-          // given
-          const diagram = require('./single-warning.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const button = el.querySelector('button.bjsl-button.bjsl-button-warning');
-              expect(button).to.exist;
-
-              done();
-            });
-          });
-
-        });
-
-
-        it('should show error button if there is a warning and an error', function(done) {
-
-          // given
-          const diagram = require('./warning-and-error.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const button = el.querySelector('button.bjsl-button.bjsl-button-error');
-              expect(button).to.exist;
-
-              done();
-            });
-
-          });
-
-        });
-
-      });
-
-
-      describe('button error amount', function() {
-
-        (singleStart ? it.only : it)('should correctly count errors and warnings', function(done) {
-
-          // given
-          const diagram = require('./errors-and-warnings.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const buttonText = el.querySelector('button.bjsl-button.bjsl-button-error').textContent;
-              expect(buttonText.trim()).to.equal('8 Errors, 2 Warnings');
-
-              done();
-            });
-          });
-
-        });
-
-      });
-
-    });
-
-
-    describe('overlays', function() {
-
-      describe('contents', function() {
-
-        it('should show error overlay for an error', function(done) {
-
-          // given
-          const diagram = require('./single-error.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-error');
-              expect(overlay).to.exist;
-              expect(overlay).to.have.length(1);
-
-              done();
-            });
-
-          });
-
-        });
-
-
-        it('should show warning overlay for a warning', function(done) {
-
-          // given
-          const diagram = require('./single-warning.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-warning');
-              expect(overlay).to.exist;
-              expect(overlay).to.have.length(1);
-
-              done();
-            });
-
-          });
-
-        });
-
-
-        it('should show warning on root level', function(done) {
-
-          // given
-          const customConfig = {
-            ...bpmnlintrc,
-            'config': {
-              'rules': {
-                'start-event-required': 'warn'
-              }
+});
+
+
+describe('linting - ui', function() {
+
+  let modeler, el;
+
+  beforeEach(function() {
+    el = document.createElement('div');
+    el.style.width = '100%';
+    el.style.height = '100%';
+    el.style.position = 'fixed';
+
+    document.body.appendChild(el);
+
+    // given
+    modeler = new Modeler({
+      container: el,
+      additionalModules: [
+        LintModule
+      ],
+      linting: {
+        active: true,
+        bpmnlint: {
+          config: {
+            extends: 'bpmnlint:recommended',
+            rules: {
+              'foo/rule-error': 'error',
+              'no-implicit-start': 'info'
             }
-          };
-          const diagram = require('./missing-start-event.bpmn');
-
-          // when
-          modeler.get('linting').setLinterConfig(customConfig);
-
-          modeler.importXML(diagram).then(function() {
-
-            toggleLinting(modeler, function() {
-
-              // then
-              const processOverlays = el.querySelector('.djs-overlays[data-container-id="Process"]');
-              const warningIcon = processOverlays.querySelector('.bjsl-icon-warning');
-              expect(warningIcon).to.exist;
-
-              done();
-            });
-          });
-        });
-
-
-        it('should show error overlay for a warning and an error', function(done) {
-
-          // given
-          const diagram = require('./warning-and-error-combined.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-error');
-              expect(overlay).to.exist;
-              expect(overlay).to.have.length(1);
-
-              done();
-            });
-
-          });
-
-        });
+          },
+          resolver: new StaticResolver({
+            'config:bpmnlint/recommended': require('bpmnlint/config/recommended'),
+            ...Object.keys(require('bpmnlint/config/recommended').rules).reduce((rules, rule) => {
+              return {
+                ...rules,
+                [`rule:bpmnlint/${ rule }`]: require(`bpmnlint/rules/${ rule }`)
+              };
+            }, {}),
+            'rule:bpmnlint-plugin-foo/rule-error': function() {
+              return {
+                check(node) {
+                  if (is(node, 'bpmn:Process')) {
+                    throw new Error('Rule error!');
+                  }
+                }
+              };
+            }
+          })
+        }
+      }
+    });
+  });
 
 
-        it('should show error and warning messages in overlay', function(done) {
+  describe('status button', function() {
 
-          // given
-          const diagram = require('./warning-and-error-combined.bpmn');
+    describe('style', function() {
 
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
+      it('should indicate success', async function() {
 
-              // then
-              const issueList = el.querySelector('.bjsl-dropdown .bjsl-dropdown-content .bjsl-issues ul');
-              expect(issueList).to.exist;
+        // given
+        const diagram = require('./no-error.bpmn');
 
-              const errorEntry = issueList.querySelector('li.error');
-              expect(errorEntry).to.exist;
+        // when
+        await modeler.importXML(diagram);
 
-              const errorIcon = errorEntry.querySelector('span.icon');
-              expect(errorIcon).to.exist;
+        await toggleLinting(modeler);
 
-              const warningEntry = issueList.querySelector('li.warning');
-              expect(warningEntry).to.exist;
-
-              const warningIcon = warningEntry.querySelector('span.icon');
-              expect(warningIcon).to.exist;
-
-              done();
-            });
-
-          });
-
-        });
-
-
-        it('should provide message in overlay', function(done) {
-
-          // given
-          const diagram = require('./single-error.bpmn');
-
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
-
-              // then
-              const errorEntry = el.querySelector(
-                'a' +
-                '[title="label-required: Element is missing label/name"]' +
-                '[data-rule="label-required"]' +
-                '[data-message="Element is missing label/name"]'
-              );
-              expect(errorEntry).to.exist;
-              expect(errorEntry.innerText).to.equal('Element is missing label/name');
-
-              done();
-            });
-
-          });
-
-        });
+        // then
+        const button = el.querySelector('button.bjsl-button.bjsl-button-success');
+        expect(button).to.exist;
 
       });
 
 
-      describe('positioning', function() {
+      it('should indicate error', async function() {
 
-        it('should position overlay on the task element - task issue', function(done) {
+        // given
+        const diagram = require('./single-error.bpmn');
 
-          // given
-          const diagram = require('./single-error.bpmn');
+        // when
+        await modeler.importXML(diagram);
 
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
+        await toggleLinting(modeler);
 
-              // then
-              const container = el.querySelector('.djs-overlays[data-container-id="Task_1"]');
-              expect(container).to.exist;
-              expect(container.style.left).to.equal('240px');
-              expect(container.style.top).to.equal('110px');
-              expect(container.style.position).to.equal('absolute');
+        // then
+        const button = el.querySelector('button.bjsl-button.bjsl-button-error');
+        expect(button).to.exist;
+      });
 
-              done();
-            });
 
-          });
+      it('should indicate warning', async function() {
 
-        });
+        // given
+        const diagram = require('./single-warning.bpmn');
 
+        // when
+        await modeler.importXML(diagram);
 
-        it('should position overlay on the process - process level issue', function(done) {
+        await toggleLinting(modeler);
 
-          // given
-          const diagram = require('./root-level-error.bpmn');
+        // then
+        const button = el.querySelector('button.bjsl-button.bjsl-button-warning');
+        expect(button).to.exist;
+      });
 
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
 
-              // then
-              const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
-              expect(container).to.exist;
+      it('should indicate error + warning', async function() {
 
-              const lintingOverlay = container.querySelector('.djs-overlay-linting');
-              expect(lintingOverlay.style.left).to.equal('150px');
-              expect(lintingOverlay.style.top).to.equal('20px');
-              expect(lintingOverlay.style.position).to.equal('absolute');
+        // given
+        const diagram = require('./warning-and-error.bpmn');
 
-              done();
-            });
+        // when
+        await modeler.importXML(diagram);
 
-          });
+        await toggleLinting(modeler);
 
-        });
+        // then
+        const button = el.querySelector('button.bjsl-button.bjsl-button-error');
+        expect(button).to.exist;
+      });
 
+    });
 
-        it('should position overlay on the participant element - process level issue in collaboration', function(done) {
 
-          // given
-          const diagram = require('./process-collaboration-errors.bpmn');
+    describe('count', function() {
 
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
+      (singleStart ? it.only : it)('should indicate counts', async function() {
 
-              // then
-              const container = el.querySelector('.djs-overlays[data-container-id="Participant_1"]');
-              expect(container).to.exist;
+        // given
+        const diagram = require('./errors-and-warnings.bpmn');
 
-              const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-top-right');
-              expect(errorOverlay).to.exist;
+        // when
+        await modeler.importXML(diagram);
 
-              const issues = errorOverlay.querySelector('.bjsl-issues');
-              expect(issues).to.exist;
+        await toggleLinting(modeler);
 
-              const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
-              expect(currentElementIssues).to.have.length(0);
+        // then
+        const buttonText = el.querySelector('button.bjsl-button.bjsl-button-error').textContent;
+        expect(buttonText.trim()).to.equal('8 Errors, 2 Warnings');
+      });
 
-              const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
-              expect(childElementIssues).to.have.length(2);
+    });
 
-              const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
-              expect(childElementIssueIdHints).to.have.length(2);
+  });
 
-              done();
-            });
 
-          });
+  describe('overlays', function() {
 
-        });
+    describe('should show', function() {
 
+      it('error', async function() {
 
-        it('should position overlay on the process level - task without BPMNDI', function(done) {
+        // given
+        const diagram = require('./single-error.bpmn');
 
-          // given
-          const diagram = require('./no-bpmndi.bpmn');
+        // when
+        await modeler.importXML(diagram);
 
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
+        await toggleLinting(modeler);
 
-              // then
-              const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
-              expect(container).to.exist;
+        // then
+        const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-error');
+        expect(overlay).to.exist;
+        expect(overlay).to.have.length(1);
+      });
 
-              const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
-              expect(errorOverlay).to.exist;
 
-              const issues = errorOverlay.querySelector('.bjsl-issues');
-              expect(issues).to.exist;
+      it('warning', async function() {
 
-              const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
-              expect(currentElementIssues).to.have.length(0);
+        // given
+        const diagram = require('./single-warning.bpmn');
 
-              const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
-              expect(childElementIssues).to.have.length(3);
+        // when
+        await modeler.importXML(diagram);
 
-              const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
-              expect(childElementIssueIdHints).to.have.length(3);
+        await toggleLinting(modeler);
 
-              done();
-            });
+        // then
+        const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-warning');
+        expect(overlay).to.exist;
+        expect(overlay).to.have.length(1);
+      });
 
-          });
 
-        });
+      it('warning (root level)', async function() {
 
+        // given
+        const customConfig = {
+          ...bpmnlintrc,
+          'config': {
+            'rules': {
+              'start-event-required': 'warn'
+            }
+          }
+        };
+        const diagram = require('./missing-start-event.bpmn');
 
-        it('should position overlay on the process level - task without BPMNDI & existing process issues', function(done) {
+        // when
+        modeler.get('linting').setLinterConfig(customConfig);
 
-          // given
-          const diagram = require('./no-bpmndi-and-root-error.bpmn');
+        await modeler.importXML(diagram);
 
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
+        await toggleLinting(modeler);
 
-              // then
-              const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
-              expect(container).to.exist;
+        // then
+        const processOverlays = el.querySelector('.djs-overlays[data-container-id="Process"]');
+        const warningIcon = processOverlays.querySelector('.bjsl-icon-warning');
+        expect(warningIcon).to.exist;
+      });
 
-              const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
-              expect(errorOverlay).to.exist;
 
-              const issues = errorOverlay.querySelector('.bjsl-issues');
-              expect(issues).to.exist;
+      it('error over warning', async function() {
 
-              const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
-              expect(currentElementIssues).to.have.length(1);
+        // given
+        const diagram = require('./warning-and-error-combined.bpmn');
 
-              const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
-              expect(childElementIssues).to.have.length(3);
+        // when
+        await modeler.importXML(diagram);
 
-              const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
-              expect(childElementIssueIdHints).to.have.length(3);
+        await toggleLinting(modeler);
 
-              done();
-            });
+        // then
+        const overlay = el.querySelectorAll('.bjsl-overlay .bjsl-icon-error');
+        expect(overlay).to.exist;
+        expect(overlay).to.have.length(1);
+      });
 
-          });
 
-        });
+      it('error + warning messages', async function() {
 
+        // given
+        const diagram = require('./warning-and-error-combined.bpmn');
 
-        withBpmnJs('>=9')('should add overlays to subprocess view', function(done) {
+        // when
+        await modeler.importXML(diagram);
 
-          // given
-          const diagram = require('./multiple-plane-two-errors.bpmn');
+        await toggleLinting(modeler);
 
-          // when
-          modeler.importXML(diagram).then(function() {
-            toggleLinting(modeler, function() {
+        // then
+        const issueList = el.querySelector('.bjsl-dropdown .bjsl-dropdown-content .bjsl-issues ul');
+        expect(issueList).to.exist;
 
-              // then
-              const collapsedOverlay = el.querySelector('.djs-overlays[data-container-id="Subprocess"]');
-              expect(collapsedOverlay).to.exist;
+        const errorEntry = issueList.querySelector('li.error');
+        expect(errorEntry).to.exist;
 
-              const collapsedError = collapsedOverlay.querySelector('.bjsl-overlay.bjsl-issues-top-right');
-              expect(collapsedError).to.exist;
+        const errorIcon = errorEntry.querySelector('span.icon');
+        expect(errorIcon).to.exist;
 
-              const planeOverlay = el.querySelector('.djs-overlays[data-container-id="Subprocess_plane"]');
-              expect(planeOverlay).to.exist;
+        const warningEntry = issueList.querySelector('li.warning');
+        expect(warningEntry).to.exist;
 
-              const planeError = planeOverlay.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
-              expect(planeError).to.exist;
+        const warningIcon = warningEntry.querySelector('span.icon');
+        expect(warningIcon).to.exist;
+      });
 
-              const internalOverlay = el.querySelector('.djs-overlays[data-container-id="Task_B"]');
-              expect(internalOverlay).to.exist;
 
-              const internalError = internalOverlay.querySelector('.bjsl-overlay.bjsl-issues-top-right');
-              expect(internalError).to.exist;
+      it('meta-data on elements', async function() {
 
-              done();
-            });
+        // given
+        const diagram = require('./single-error.bpmn');
 
-          });
+        // when
+        await modeler.importXML(diagram);
 
-        });
+        await toggleLinting(modeler);
+
+        // then
+        const errorEntry = el.querySelector(
+          'a' +
+          '[title="label-required: Element is missing label/name"]' +
+          '[data-rule="label-required"]' +
+          '[data-message="Element is missing label/name"]'
+        );
+        expect(errorEntry).to.exist;
+        expect(errorEntry.innerText).to.equal('Element is missing label/name');
+      });
+
+    });
+
+
+    describe('positioning', function() {
+
+      it('should position overlay on the task element - task issue', async function() {
+
+        // given
+        const diagram = require('./single-error.bpmn');
+
+        // when
+        await modeler.importXML(diagram);
+
+        await toggleLinting(modeler);
+
+        // then
+        const container = el.querySelector('.djs-overlays[data-container-id="Task_1"]');
+        expect(container).to.exist;
+        expect(container.style.left).to.equal('240px');
+        expect(container.style.top).to.equal('110px');
+        expect(container.style.position).to.equal('absolute');
+      });
+
+
+      it('should position overlay on the process - process level issue', async function() {
+
+        // given
+        const diagram = require('./root-level-error.bpmn');
+
+        // when
+        await modeler.importXML(diagram);
+
+        await toggleLinting(modeler);
+
+        // then
+        const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
+        expect(container).to.exist;
+
+        const lintingOverlay = container.querySelector('.djs-overlay-linting');
+        expect(lintingOverlay.style.left).to.equal('150px');
+        expect(lintingOverlay.style.top).to.equal('20px');
+        expect(lintingOverlay.style.position).to.equal('absolute');
+      });
+
+
+      it('should position overlay on the participant element - process level issue in collaboration', async function() {
+
+        // given
+        const diagram = require('./process-collaboration-errors.bpmn');
+
+        // when
+        await modeler.importXML(diagram);
+
+        await toggleLinting(modeler);
+
+        // then
+        const container = el.querySelector('.djs-overlays[data-container-id="Participant_1"]');
+        expect(container).to.exist;
+
+        const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-top-right');
+        expect(errorOverlay).to.exist;
+
+        const issues = errorOverlay.querySelector('.bjsl-issues');
+        expect(issues).to.exist;
+
+        const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
+        expect(currentElementIssues).to.have.length(0);
+
+        const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
+        expect(childElementIssues).to.have.length(2);
+
+        const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
+        expect(childElementIssueIdHints).to.have.length(2);
+      });
+
+
+      it('should position overlay on the process level - task without BPMNDI', async function() {
+
+        // given
+        const diagram = require('./no-bpmndi.bpmn');
+
+        // when
+        await modeler.importXML(diagram);
+
+        await toggleLinting(modeler);
+
+        // then
+        const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
+        expect(container).to.exist;
+
+        const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
+        expect(errorOverlay).to.exist;
+
+        const issues = errorOverlay.querySelector('.bjsl-issues');
+        expect(issues).to.exist;
+
+        const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
+        expect(currentElementIssues).to.have.length(0);
+
+        const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
+        expect(childElementIssues).to.have.length(3);
+
+        const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
+        expect(childElementIssueIdHints).to.have.length(3);
+      });
+
+
+      it('should position overlay on the process level - task without BPMNDI & existing process issues', async function() {
+
+        // given
+        const diagram = require('./no-bpmndi-and-root-error.bpmn');
+
+        // when
+        await modeler.importXML(diagram);
+
+        await toggleLinting(modeler);
+
+        // then
+        const container = el.querySelector('.djs-overlays[data-container-id="Process_1"]');
+        expect(container).to.exist;
+
+        const errorOverlay = container.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
+        expect(errorOverlay).to.exist;
+
+        const issues = errorOverlay.querySelector('.bjsl-issues');
+        expect(issues).to.exist;
+
+        const currentElementIssues = errorOverlay.querySelectorAll('.bjsl-current-element-issues li');
+        expect(currentElementIssues).to.have.length(1);
+
+        const childElementIssues = errorOverlay.querySelectorAll('.bjsl-child-issues li');
+        expect(childElementIssues).to.have.length(3);
+
+        const childElementIssueIdHints = errorOverlay.querySelectorAll('.bjsl-id-hint');
+        expect(childElementIssueIdHints).to.have.length(3);
+      });
+
+
+      withBpmnJs('>=9')('should add overlays to subprocess view', async function() {
+
+        // given
+        const diagram = require('./multiple-plane-two-errors.bpmn');
+
+        // when
+        await modeler.importXML(diagram);
+
+        await toggleLinting(modeler);
+
+        // then
+        const collapsedOverlay = el.querySelector('.djs-overlays[data-container-id="Subprocess"]');
+        expect(collapsedOverlay).to.exist;
+
+        const collapsedError = collapsedOverlay.querySelector('.bjsl-overlay.bjsl-issues-top-right');
+        expect(collapsedError).to.exist;
+
+        const planeOverlay = el.querySelector('.djs-overlays[data-container-id="Subprocess_plane"]');
+        expect(planeOverlay).to.exist;
+
+        const planeError = planeOverlay.querySelector('.bjsl-overlay.bjsl-issues-bottom-right');
+        expect(planeError).to.exist;
+
+        const internalOverlay = el.querySelector('.djs-overlays[data-container-id="Task_B"]');
+        expect(internalOverlay).to.exist;
+
+        const internalError = internalOverlay.querySelector('.bjsl-overlay.bjsl-issues-top-right');
+        expect(internalError).to.exist;
 
       });
 
     });
 
   });
+
 });
 
 
-describe('i18n', function() {
+describe('linting - i18n', function() {
 
-  it('should translate lint issues text', function(done) {
+  it('should translate lint issues text', async function() {
 
     const el = document.createElement('div');
     el.style.width = '100%';
@@ -811,45 +734,36 @@ describe('i18n', function() {
 
     const diagram = require('./diagram-with-issues.bpmn');
 
-    modeler.importXML(diagram)
-      .then(function() {
-        const linting = modeler.get('linting'),
-              eventBus = modeler.get('eventBus');
+    await modeler.importXML(diagram);
 
-        linting.toggle(true);
+    await toggleLinting(modeler);
 
-        eventBus.once('linting.completed', function() {
+    const button = el.querySelector('button.bjsl-button.bjsl-button-error');
+    expect(button).to.exist;
+    expect(button.title).to.equal('Перемкнути перевірку');
 
-          const button = el.querySelector('button.bjsl-button.bjsl-button-error');
-          expect(button).to.exist;
-          expect(button.title).to.equal('Перемкнути перевірку');
+    const buttonText = button.textContent;
+    expect(buttonText.trim()).to.equal('16 помилок, 0 попередженнь');
 
-          const buttonText = button.textContent;
-          expect(buttonText.trim()).to.equal('16 помилок, 0 попередженнь');
-
-          const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
-          expect(endEventRequiredMessage).to.exist;
-          expect(endEventRequiredMessage.dataset.message).to.equal('У процеса відсутня завершальна подія');
-
-          done();
-        });
-      })
-      .catch(function(err) { done(err); });
-
+    const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
+    expect(endEventRequiredMessage).to.exist;
+    expect(endEventRequiredMessage.dataset.message).to.equal('У процеса відсутня завершальна подія');
   });
 
 });
 
-
 // helper //////////////////
 
-function toggleLinting(modeler, validationCallback) {
-  const linting = modeler.get('linting'),
-        eventBus = modeler.get('eventBus');
+function toggleLinting(modeler) {
 
-  linting.toggle(true);
+  return new Promise(resolve => {
+    const linting = modeler.get('linting'),
+          eventBus = modeler.get('eventBus');
 
-  eventBus.once('linting.completed', validationCallback);
+    linting.toggle(true);
+
+    eventBus.once('linting.completed', resolve);
+  });
 }
 
 /**
