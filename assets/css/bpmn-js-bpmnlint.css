@@ -185,9 +185,10 @@
   color: #444;
 }
 
-.bjsl-button svg {
-  margin-top: -1px;
+.bjsl-button .icon {
   margin-right: 10px;
+  width: 15px;
+  height: 15px;
 }
 
 .bjsl-button-success {

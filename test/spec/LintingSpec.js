@@ -387,9 +387,8 @@ describe('linting', function() {
             toggleLinting(modeler, function() {
 
               // then
-              const buttonSpan = el.querySelector('button.bjsl-button.bjsl-button-error span');
-              expect(buttonSpan).to.exist;
-              expect(buttonSpan.innerText).to.equal('8 Errors, 2 Warnings');
+              const buttonText = el.querySelector('button.bjsl-button.bjsl-button-error').textContent;
+              expect(buttonText.trim()).to.equal('8 Errors, 2 Warnings');
 
               done();
             });
@@ -825,9 +824,8 @@ describe('i18n', function() {
           expect(button).to.exist;
           expect(button.title).to.equal('Перемкнути перевірку');
 
-          const buttonTextSpan = button.querySelector('span');
-          expect(buttonTextSpan).to.exist;
-          expect(buttonTextSpan.innerText).to.equal('16 помилок, 0 попередженнь');
+          const buttonText = button.textContent;
+          expect(buttonText.trim()).to.equal('16 помилок, 0 попередженнь');
 
           const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
           expect(endEventRequiredMessage).to.exist;
