@@ -41,7 +41,7 @@
     "chai": "^4.3.7",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
-    "diagram-js": "^12.2.0",
+    "diagram-js": "^13.0.0",
     "eslint": "^8.34.0",
     "eslint-plugin-bpmn-io": "^1.0.0",
     "karma": "^6.4.1",
