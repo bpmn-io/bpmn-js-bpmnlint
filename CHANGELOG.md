@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.22.1
+
+* `FIX`: correct icon rendering with custom box-sizing
+
 ## 0.22.0
 
 * `FEAT`: support `info` type ([`35e799ff`](https://github.com/bpmn-io/bpmn-js-bpmnlint/commit/35e799fffcd78752b5ea8b19feeca0241c2f2637))
