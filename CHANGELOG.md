@@ -6,6 +6,15 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.22.0
+
+* `FEAT`: support `info` type ([`35e799ff`](https://github.com/bpmn-io/bpmn-js-bpmnlint/commit/35e799fffcd78752b5ea8b19feeca0241c2f2637))
+* `FEAT`: unify + centralize style definitions ([`0b3d214`](https://github.com/bpmn-io/bpmn-js-bpmnlint/commit/0b3d214477e0711615410b4968eb9d910763c438))
+* `FEAT`: eagerly validate ([`18c4f4d`](https://github.com/bpmn-io/bpmn-js-bpmnlint/commit/18c4f4de86ce2ab7053cce0f44c08bbfaeeba3d8))
+* `FEAT`: improve scaling behavior ([`ea1018f`](https://github.com/bpmn-io/bpmn-js-bpmnlint/commit/ea1018fd35358fd077f3012edbcf3a00bcc31953))
+* `DEPS`: update to `bpmnlint@10`
+* `DEPS`: update to `bpmn-js@16`
+
 ## 0.21.0
 
 * `DEPS`: update to `bpmnlint@8.3.1`
