@@ -13,6 +13,10 @@
   z-index: 500;
 }
 
+.bjsl-overlay * {
+  box-sizing: border-box;
+}
+
 .bjsl-overlay:hover {
   z-index: 1000;
 }
@@ -41,12 +45,17 @@
   background: var(--icon-bg-color);
   color: var(--icon-color);
   border-radius: 100%;
-  height: .75em;
-  width: .75em;
+  height: 1.5em;
+  width: 1.5em;
   padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bjsl-icon svg {
+  width: 80%;
+  height: 80%;
 }
 
 .bjsl-icon-error {
