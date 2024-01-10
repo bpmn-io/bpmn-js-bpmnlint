@@ -6,6 +6,10 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.22.2
+
+* `FIX`: apply fixed icon size
+
 ## 0.22.1
 
 * `FIX`: correct icon rendering with custom box-sizing
