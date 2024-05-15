@@ -38,7 +38,7 @@
     "bpmn-js": "^17.0.0",
     "bpmnlint": "^10.0.0",
     "bpmnlint-loader": "^0.1.6",
-    "chai": "^4.4.0",
+    "chai": "^5.0.0",
     "cpx2": "^7.0.0",
     "cross-env": "^7.0.3",
     "diagram-js": "^14.0.0",
@@ -57,7 +57,7 @@
     "puppeteer": "^22.0.0",
     "rollup": "^4.9.4",
     "rollup-plugin-string": "^3.0.0",
-    "sinon": "^17.0.1",
+    "sinon": "^18.0.0",
     "sinon-chai": "^3.7.0",
     "webpack": "^5.89.0"
   },
