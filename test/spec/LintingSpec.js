@@ -13,6 +13,7 @@ import StaticResolver from 'bpmnlint/lib/resolver/static-resolver';
 import LintModule from '../../lib';
 
 import bpmnlintrc from './.bpmnlintrc';
+import diagram from "./diagram-with-issues.bpmn";
 
 insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 
@@ -701,23 +702,6 @@ describe('linting - i18n', function() {
 
     document.body.appendChild(el);
 
-    const translations = {
-      'Toggle linting overlays': 'Перемкнути перевірку',
-      'Process is missing end event': 'У процеса відсутня завершальна подія',
-      '{errors} Errors, {warnings} Warnings': '{errors} помилок, {warnings} попередженнь'
-    };
-
-    function translateModule(template, replacements = {}) {
-
-      // Translate
-      let transTemplate = translations[template] || template;
-
-      // Replace
-      return transTemplate.replace(/{([^}]+)}/g, function(_, key) {
-        return key in replacements ? replacements[key] : '{' + key + '}';
-      });
-    }
-
     // given
     const modeler = new Modeler({
       container: el,
@@ -750,9 +734,60 @@ describe('linting - i18n', function() {
     expect(endEventRequiredMessage.dataset.message).to.equal('У процеса відсутня завершальна подія');
   });
 
+  it('should translate child issues grouping text', async function() {
+
+    const el = document.createElement('div');
+    el.style.width = '100%';
+    el.style.height = '100%';
+    el.style.position = 'fixed';
+    document.body.appendChild(el);
+
+    // given
+    const modeler = new Modeler({
+      container: el,
+      additionalModules: [
+        LintModule,
+        {
+          translate: [ 'value', translateModule ]
+        }
+      ],
+      linting: {
+        bpmnlint: bpmnlintrc
+      }
+    });
+
+    const diagram = require('./diagram-with-child-issues.bpmn');
+
+    await modeler.importXML(diagram);
+
+    await toggleLinting(modeler);
+
+    const issueHeading = el.querySelector('.bjsl-issue-heading');
+    expect(issueHeading).to.exist;
+    expect(issueHeading.innerText).to.equal('Проблеми дочірніх елементів:');
+  });
+
 });
 
 // helper //////////////////
+
+const translations = {
+  'Toggle linting overlays': 'Перемкнути перевірку',
+  'Process is missing end event': 'У процеса відсутня завершальна подія',
+  '{errors} Errors, {warnings} Warnings': '{errors} помилок, {warnings} попередженнь',
+  'Issues for child elements': 'Проблеми дочірніх елементів'
+};
+
+function translateModule(template, replacements = {}) {
+
+  // Translate
+  let transTemplate = translations[template] || template;
+
+  // Replace
+  return transTemplate.replace(/{([^}]+)}/g, function(_, key) {
+    return key in replacements ? replacements[key] : '{' + key + '}';
+  });
+}
 
 function toggleLinting(modeler) {
 
