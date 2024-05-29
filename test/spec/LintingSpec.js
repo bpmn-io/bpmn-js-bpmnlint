@@ -13,7 +13,6 @@ import StaticResolver from 'bpmnlint/lib/resolver/static-resolver';
 import LintModule from '../../lib';
 
 import bpmnlintrc from './.bpmnlintrc';
-import diagram from "./diagram-with-issues.bpmn";
 
 insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 
