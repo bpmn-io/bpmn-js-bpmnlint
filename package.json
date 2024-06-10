@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "min-dash": "^4.1.1",
-    "min-dom": "^4.1.0"
+    "min-dom": "^4.2.1"
   },
   "peerDependencies": {
     "bpmn-js": "*",
