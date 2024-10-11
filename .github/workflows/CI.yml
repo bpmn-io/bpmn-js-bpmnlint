@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-latest ]
-        node-version: [ 16 ]
+        node-version: [ 20 ]
         integration-deps:
           - "" # as defined in package.json
           - bpmn-js@8.x diagram-js@7.x
