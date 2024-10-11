@@ -806,7 +806,7 @@ function toggleLinting(modeler) {
  * @param {string} versionRange
  * @param {boolean} only
  */
-export function withBpmnJs(versionRange, only = false) {
+function withBpmnJs(versionRange, only = false) {
   if (bpmnJsSatisfies(versionRange)) {
     return only ? it.only : it;
   } else {
