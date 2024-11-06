@@ -7,6 +7,7 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 ___Note:__ Yet to be released changes appear here._
 
 * `CHORE`: update to `diagram-js@15.1.0`
+* `CHORE`: update to `bpmn-js@18.0.0`
 
 ## 0.22.1
 
