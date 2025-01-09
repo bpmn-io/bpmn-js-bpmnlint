@@ -32,7 +32,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "bpmn-js": "^18.1.2",
@@ -55,7 +55,7 @@
     "mocha-test-container-support": "^0.2.0",
     "npm-run-all2": "^7.0.0",
     "puppeteer": "^23.11.1",
-    "rollup": "^4.9.4",
+    "rollup": "^4.30.1",
     "rollup-plugin-string": "^3.0.0",
     "sinon": "^17.0.1",
     "sinon-chai": "^3.7.0",
