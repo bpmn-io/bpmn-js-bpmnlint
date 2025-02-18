@@ -505,13 +505,22 @@ describe('linting - ui', function() {
 
         // then
         const errorEntry = el.querySelector(
-          'a' +
-          '[title="label-required: Element is missing label/name"]' +
-          '[data-rule="label-required"]' +
-          '[data-message="Element is missing label/name"]'
+          '[data-rule="label-required"]'
         );
         expect(errorEntry).to.exist;
-        expect(errorEntry.innerText).to.equal('Element is missing label/name');
+
+        const messageEntry = errorEntry.querySelector('.message');
+        expect(messageEntry).to.exist;
+        expect(messageEntry.textContent).to.eql('Element is missing label/name');
+
+        const ruleEntry = errorEntry.querySelector('.rule');
+        expect(ruleEntry).to.exist;
+        expect(ruleEntry.textContent).to.eql('(label-required)');
+
+        const documentationLink = ruleEntry.querySelector('a');
+        expect(documentationLink).to.exist;
+        expect(documentationLink.href).to.eql('https://github.com/bpmn-io/bpmnlint/blob/main/docs/rules/label-required.md');
+        expect(documentationLink.textContent).to.eql('label-required');
       });
 
     });
@@ -728,9 +737,9 @@ describe('linting - i18n', function() {
     const buttonText = button.textContent;
     expect(buttonText.trim()).to.equal('16 помилок, 0 попередженнь');
 
-    const endEventRequiredMessage = el.querySelector('a[data-rule="end-event-required"]');
+    const endEventRequiredMessage = el.querySelector('[data-rule="end-event-required"] .message');
     expect(endEventRequiredMessage).to.exist;
-    expect(endEventRequiredMessage.dataset.message).to.equal('У процеса відсутня завершальна подія');
+    expect(endEventRequiredMessage.textContent).to.equal('У процеса відсутня завершальна подія');
   });
 
   it('should translate child issues grouping text', async function() {
