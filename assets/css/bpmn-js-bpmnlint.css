@@ -148,10 +148,16 @@
   --icon-color: var(--bjsl-color-info);
 }
 
-.bjsl-issues a {
+.bjsl-issues .message {
   color: var(--bjsl-font-color);
-  margin-left: 8px;
+  margin-left: .5em;
   text-decoration: none;
+}
+
+.bjsl-issues .rule {
+  color: var(--bjsl-font-color);
+  margin-left: .5em;
+  font-family: monospace;
 }
 
 .bjsl-issues .bjsl-issue-heading {
