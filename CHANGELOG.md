@@ -6,8 +6,13 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+
+## 0.23.0
+
+* `FEAT`: show documentation URL for rules ([#92](https://github.com/bpmn-io/bpmn-js-bpmnlint/issues/92))
+* `FEAT`: show rule name with report ([#93](https://github.com/bpmn-io/bpmn-js-bpmnlint/pull/93))
 * `CHORE`: update to `diagram-js@15.1.0`
-* `CHORE`: update to `bpmn-js@18.0.0`
+* `CHORE`: update to `bpmn-js@18.3.0`
 
 ## 0.22.1
 
