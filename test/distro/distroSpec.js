@@ -1,3 +1,5 @@
+import { expect } from 'chai';
+
 describe('distro', function() {
 
   it('should expose CJS bundle', function() {
