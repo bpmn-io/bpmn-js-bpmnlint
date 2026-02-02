@@ -19,6 +19,14 @@
     "copy-assets": "cpx assets/css/* dist/assets/css/ -v",
     "prepublishOnly": "run-s distro"
   },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.esm.js"
+    },
+    "./package.json": "./package.json",
+    "./dist/*": "./dist/*"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bpmn-io/bpmn-js-bpmnlint.git"
