@@ -13,6 +13,10 @@ ___Note:__ Yet to be released changes appear here._
 * `DEPS`: update to `min-dash@5.2.0`
 * `DEPS`: update to `min-dom@5.0.0`
 
+### Breaking Changes
+
+* Drop `UMD` distribution; consume via ESM if needed
+
 ## 0.23.0
 
 * `FEAT`: show documentation URL for rules ([#92](https://github.com/bpmn-io/bpmn-js-bpmnlint/issues/92))
