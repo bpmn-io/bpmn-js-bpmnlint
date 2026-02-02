@@ -36,7 +36,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@rollup/plugin-terser": "^0.4.4",
     "bpmn-js": "^18.11.0",
-    "bpmnlint": "^11.2.0",
+    "bpmnlint": "^11.8.0",
     "bpmnlint-loader": "^0.1.6",
     "chai": "^6.0.0",
     "cpx2": "^8.0.0",
