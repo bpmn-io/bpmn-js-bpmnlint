@@ -6,6 +6,12 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.24.0
+
+* `CHORE`: drop UMD distribution
+* `CHORE`: add `exports` declaration
+* `DEPS`: update to `min-dash@5.2.0`
+* `DEPS`: update to `min-dom@5.0.0`
 
 ## 0.23.0
 
