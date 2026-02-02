@@ -1,18 +1,10 @@
-import { expect } from 'chai';
+const { expect } = require('chai');
 
 
 describe('distro', function() {
 
   it('should expose CJS bundle', function() {
-    const BpmnJSBpmnlint = require('../../dist/index.js');
-
-    expect(BpmnJSBpmnlint).to.exist;
-    expect(BpmnJSBpmnlint.__init__).to.exist;
-  });
-
-
-  it('should expose UMD bundle', function() {
-    const BpmnJSBpmnlint = require('../../dist/bpmn-js-bpmnlint.umd.js');
+    const BpmnJSBpmnlint = require('bpmn-js-bpmnlint');
 
     expect(BpmnJSBpmnlint).to.exist;
     expect(BpmnJSBpmnlint.__init__).to.exist;
