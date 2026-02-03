@@ -41,7 +41,7 @@
   "license": "MIT",
   "devDependencies": {
     "bpmn-js": "^18.11.0",
-    "bpmnlint": "^11.8.0",
+    "bpmnlint": "^11.9.0",
     "bpmnlint-loader": "^0.1.6",
     "chai": "^6.0.0",
     "cpx2": "^8.0.0",
