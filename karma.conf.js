@@ -11,11 +11,11 @@ var absoluteBasePath = path.resolve(__dirname);
 var browsers = (process.env.TEST_BROWSERS || 'ChromeHeadless').split(',');
 
 // use puppeteer provided Chrome for testing
-process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 var suite = 'test/suite.js';
 
-module.exports = function(karma) {
+module.exports = async function(karma) {
+  process.env.CHROME_BIN = await require('puppeteer').executablePath();
 
   var config = {
 
