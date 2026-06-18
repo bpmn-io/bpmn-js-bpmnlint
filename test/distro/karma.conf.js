@@ -18,6 +18,8 @@ module.exports = function(karma) {
       '*Spec.js': [ 'webpack' ]
     },
 
+    reporters: [ 'tldr' ],
+
     browsers,
 
     autoWatch: false,
