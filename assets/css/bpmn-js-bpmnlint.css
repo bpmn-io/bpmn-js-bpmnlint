@@ -1,10 +1,35 @@
-.djs-parent {
-  --bjsl-color-info: var(--color-blue-205-100-45);
-  --bjsl-color-warning: #f7c71a;
-  --bjsl-color-error: var(--color-red-360-100-40);
-  --bjsl-color-success: #52b415;
+/**
+ * Semantic tokens, copied from `@bpmn-io/theme` to style the components
+ * according to this theme.
+ *
+ * Names and values of the tokens should stay intact with the `@bpmn-io/theme`
+ * source of truth, to ensure matching styles and allow overrides with an
+ * alternative theme.
+ */
+.bio-theme-parent {
+  --bio-surface-subtle: hsl(225, 10%, 97%);
+  --bio-text: hsl(225, 10%, 15%);
+  --bio-text-subtle: hsl(225, 10%, 35%);
+  --bio-text-on-primary: hsl(0, 0%, 100%);
+  --bio-border: hsl(225, 10%, 75%);
+  --bio-border-subtle: hsl(225, 10%, 85%);
+  --bio-neutral-subtle: hsl(225, 10%, 80%);
+  --bio-danger: hsl(360, 100%, 45%);
+  --bio-info: hsl(205, 100%, 40%);
+  --bio-danger-marker: var(--bio-danger);
+  --bio-warning-marker: hsl(28, 100%, 45%);
+  --bio-success-marker: hsl(150, 86%, 30%);
+  --bio-info-marker: var(--bio-info);
+  --bio-radius-sm: 2px;
+}
 
-  --bjsl-font-color: var(--color-grey-225-10-15);
+.djs-parent {
+  --bjsl-color-info: var(--bio-info-marker);
+  --bjsl-color-warning: var(--bio-warning-marker);
+  --bjsl-color-error: var(--bio-danger-marker);
+  --bjsl-color-success: var(--bio-success-marker);
+
+  --bjsl-font-color: var(--bio-text);
   --bjsl-font-family: 'Arial', sans-serif;
   --bjsl-font-size: 13px;
 }
@@ -35,13 +60,13 @@
   color: var(--bjsl-font-color);
   font-family: var(--bjsl-font-family);
   font-size: var(--bjsl-font-size);
-  background: var(--color-grey-225-10-97);
-  border: solid 1px var(--color-grey-225-10-75);
-  border-radius: 2px;
+  background: var(--bio-surface-subtle);
+  border: solid 1px var(--bio-border);
+  border-radius: var(--bio-radius-sm);
 }
 
 .bjsl-icon {
-  --icon-color: white;
+  --icon-color: var(--bio-text-on-primary);
   background: var(--icon-bg-color);
   color: var(--icon-color);
   border-radius: 100%;
@@ -170,7 +195,7 @@
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--bio-border-subtle);
 }
 
 .bjsl-child-issues ul {
@@ -182,7 +207,7 @@
 }
 
 .bjsl-id-hint {
-  background-color: #bdbdbd;
+  background-color: var(--bio-neutral-subtle);
   padding: 1px;
   padding-left: 5px;
   padding-right: 5px;
@@ -201,10 +226,10 @@
   bottom: 20px;
   left: 50%;
   transform: translate(-50%);
-  background-color: #fafafa;
+  background-color: var(--bio-surface-subtle);
   padding: 5px 10px;
   border: none;
-  color: #ddd;
+  color: var(--bio-text-subtle);
   display: flex;
   outline: none;
   font-weight: bold;
@@ -212,7 +237,7 @@
 }
 
 .bjsl-button-inactive:hover {
-  color: #444;
+  color: var(--bio-text);
 }
 
 .bjsl-button .icon {
@@ -224,15 +249,15 @@
 
 .bjsl-button-success {
   background-color: var(--bjsl-color-success);
-  color: white;
+  color: var(--bio-text-on-primary);
 }
 
 .bjsl-button-error {
   background-color: var(--bjsl-color-error);
-  color: white;
+  color: var(--bio-text-on-primary);
 }
 
 .bjsl-button-warning {
   background-color: var(--bjsl-color-warning);
-  color: white;
+  color: var(--bio-text-on-primary);
 }

@@ -7,8 +7,9 @@
   "source": "lib/index.js",
   "umd:main": "dist/bpmn-js-bpmnlint.umd.js",
   "scripts": {
-    "all": "run-s lint test distro",
+    "all": "run-s lint lint:theme test distro",
     "lint": "eslint .",
+    "lint:theme": "bpmn-io-theme-validate assets/css/bpmn-js-bpmnlint.css",
     "start": "cross-env SINGLE_START=true npm run dev",
     "test": "karma start --no-auto-test --single-run",
     "dev": "karma start",
@@ -40,6 +41,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@bpmn-io/theme": "^0.3.0",
     "bpmn-js": "^18.31.0",
     "bpmnlint": "^11.9.0",
     "bpmnlint-loader": "^0.1.6",
@@ -70,9 +72,9 @@
     "min-dom": "^5.2.0"
   },
   "peerDependencies": {
-    "bpmn-js": "*",
+    "bpmn-js": ">= 18.30",
     "bpmnlint": ">= 3.2",
-    "diagram-js": "*"
+    "diagram-js": ">= 15.27"
   },
   "files": [
     "dist"
