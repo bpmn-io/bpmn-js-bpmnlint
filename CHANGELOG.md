@@ -6,6 +6,8 @@ All notable changes to [bpmn-js-bpmnlint](https://github.com/bpmn-io/bpmn-js-bpm
 
 ___Note:__ Yet to be released changes appear here._
 
+## 0.25.0
+
 * `FEAT`: source colors and corner radius from `@bpmn-io/theme` tokens. No longer reads the diagram-js `--color-*` palette. Override the `--bio-*` tokens or `--bjsl-*` instead. ([#118](https://github.com/bpmn-io/bpmn-js-bpmnlint/pull/118))
 * `DEPS`: require `diagram-js@>= 15.27.0` and `bpmn-js@>= 18.30.0` peer dependencies, which scope the theme via `bio-theme-parent` ([#118](https://github.com/bpmn-io/bpmn-js-bpmnlint/pull/118))
 
