@@ -25,6 +25,37 @@ if (bpmnJsSatisfies('>=9')) {
   insertCSS('bpmn-js', require('bpmn-js/dist/assets/bpmn-js.css'));
 }
 
+// bpmnlint declares package.json#exports, hence rules must be required
+// statically; webpack cannot resolve dynamic requires through it
+const RECOMMENDED_RULES = {
+  'ad-hoc-sub-process': require('bpmnlint/rules/ad-hoc-sub-process'),
+  'conditional-flows': require('bpmnlint/rules/conditional-flows'),
+  'end-event-required': require('bpmnlint/rules/end-event-required'),
+  'event-based-gateway': require('bpmnlint/rules/event-based-gateway'),
+  'event-sub-process-typed-start-event': require('bpmnlint/rules/event-sub-process-typed-start-event'),
+  'fake-join': require('bpmnlint/rules/fake-join'),
+  'global': require('bpmnlint/rules/global'),
+  'label-required': require('bpmnlint/rules/label-required'),
+  'link-event': require('bpmnlint/rules/link-event'),
+  'no-bpmndi': require('bpmnlint/rules/no-bpmndi'),
+  'no-complex-gateway': require('bpmnlint/rules/no-complex-gateway'),
+  'no-disconnected': require('bpmnlint/rules/no-disconnected'),
+  'no-duplicate-sequence-flows': require('bpmnlint/rules/no-duplicate-sequence-flows'),
+  'no-gateway-join-fork': require('bpmnlint/rules/no-gateway-join-fork'),
+  'no-implicit-split': require('bpmnlint/rules/no-implicit-split'),
+  'no-implicit-end': require('bpmnlint/rules/no-implicit-end'),
+  'no-implicit-start': require('bpmnlint/rules/no-implicit-start'),
+  'no-inclusive-gateway': require('bpmnlint/rules/no-inclusive-gateway'),
+  'no-overlapping-elements': require('bpmnlint/rules/no-overlapping-elements'),
+  'single-blank-start-event': require('bpmnlint/rules/single-blank-start-event'),
+  'single-event-definition': require('bpmnlint/rules/single-event-definition'),
+  'start-event-required': require('bpmnlint/rules/start-event-required'),
+  'sub-process-blank-start-event': require('bpmnlint/rules/sub-process-blank-start-event'),
+  'superfluous-gateway': require('bpmnlint/rules/superfluous-gateway'),
+  'superfluous-label': require('bpmnlint/rules/superfluous-label'),
+  'superfluous-termination': require('bpmnlint/rules/superfluous-termination')
+};
+
 var singleStart = window.__env__ && window.__env__.SINGLE_START === 'true';
 
 
@@ -270,12 +301,9 @@ describe('linting - ui', function() {
           },
           resolver: new StaticResolver({
             'config:bpmnlint/recommended': require('bpmnlint/config/recommended'),
-            ...Object.keys(require('bpmnlint/config/recommended').rules).reduce((rules, rule) => {
-              return {
-                ...rules,
-                [`rule:bpmnlint/${ rule }`]: require(`bpmnlint/rules/${ rule }`)
-              };
-            }, {}),
+            ...Object.fromEntries(Object.entries(RECOMMENDED_RULES).map(([ name, rule ]) => {
+              return [ `rule:bpmnlint/${ name }`, rule ];
+            })),
             'rule:bpmnlint-plugin-foo/rule-error': function() {
               return {
                 check(node) {
