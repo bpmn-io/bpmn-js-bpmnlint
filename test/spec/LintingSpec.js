@@ -10,11 +10,10 @@ import Modeler from 'bpmn-js/lib/Modeler';
 
 import { is } from 'bpmn-js/lib/util/ModelUtil';
 
-import StaticResolver from 'bpmnlint/lib/resolver/static-resolver';
-
 import LintModule from '../../lib';
 
 import bpmnlintrc from './.bpmnlintrc';
+import uiBpmnlintrc from './ui.bpmnlintrc';
 
 insertCSS('bpmn-js-bpmnlint', require('assets/css/bpmn-js-bpmnlint.css'));
 
@@ -262,30 +261,28 @@ describe('linting - ui', function() {
         active: true,
         bpmnlint: {
           config: {
-            extends: 'bpmnlint:recommended',
             rules: {
-              'foo/rule-error': 'error',
-              'no-implicit-start': 'info'
+              ...uiBpmnlintrc.config.rules,
+              'foo/rule-error': 'error'
             }
           },
-          resolver: new StaticResolver({
-            'config:bpmnlint/recommended': require('bpmnlint/config/recommended'),
-            ...Object.keys(require('bpmnlint/config/recommended').rules).reduce((rules, rule) => {
-              return {
-                ...rules,
-                [`rule:bpmnlint/${ rule }`]: require(`bpmnlint/rules/${ rule }`)
-              };
-            }, {}),
-            'rule:bpmnlint-plugin-foo/rule-error': function() {
-              return {
-                check(node) {
-                  if (is(node, 'bpmn:Process')) {
-                    throw new Error('Rule error!');
-                  }
-                }
-              };
+          resolver: {
+            resolveRule(pkg, ruleName) {
+              if (pkg === 'bpmnlint-plugin-foo' && ruleName === 'rule-error') {
+                return function() {
+                  return {
+                    check(node) {
+                      if (is(node, 'bpmn:Process')) {
+                        throw new Error('Rule error!');
+                      }
+                    }
+                  };
+                };
+              }
+
+              return uiBpmnlintrc.resolver.resolveRule(pkg, ruleName);
             }
-          })
+          }
         }
       }
     });
